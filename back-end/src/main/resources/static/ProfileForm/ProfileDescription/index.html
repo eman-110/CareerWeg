@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CareerWeg - Profile Description</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+  <div class="left-side">
+    <img src="../../assets/img/a (19).png" alt="Rocket">
+  </div>
+  <div class="right-side">
+    <img class="logo" src="../../assets/img/logo.png" alt="Logo">
+
+    <div class="profile-box">
+      <h2 class="profile-title">Create profile</h2>
+      <div class="profile-header">
+        <a href="../Skills/index.html">
+          <img src="../../assets/img/vector-arrow.png" alt="Back" class="back-button">
+        </a>
+        <span class="step-count">6/8</span>
+      </div>
+
+      <div class="progress-bar">
+        <div class="progress" style="width: 70%;"></div>
+      </div>
+
+      <div class="profile-content">
+        <h3>Profile Description</h3>
+        <p>Write a short description to introduce who you are on your profile</p>
+        <form action="/api/users/save-profile-description" method="POST">
+          <textarea name="profileDescription" id="description" maxlength="500"
+            placeholder="Write something here..." rows="5" oninput="updateCharCount()"
+            required></textarea>
+          <div class="char-count"><span id="char-count">0</span>/500 characters</div>
+          <button type="submit" class="next-button">Next</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function updateCharCount() {
+    const count = document.getElementById('description').value.length;
+    document.getElementById('char-count').textContent = count;
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="stylesheet" href="login.css">
+</head>
+<body>
+  <div class="login-container">
+    <div class="login-box">
+      <div class="login-image">
+        <img src="../../assets/img/hire-signup.png" alt="Illustration">
+      </div>
+      <div class="login-form">
+        <h2>Login</h2>
+          <form action="/api/users/login-hire" method="POST">
+            <input type="email" name="email" placeholder="Email" required />
+            <input type="password" name="password" placeholder="Password" required />
+            <div class="password-help">
+              <a href="#">Forget Password?</a>
+            </div>
+            <button type="submit">Login</button>
+          </form>
+        <p class="signup-text">Don’t have an account? <a href="../Signup/index.html">Signup</a></p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

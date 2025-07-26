@@ -1,0 +1,69 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Courses</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <iframe id="header-frame" src="../../header-main.html"></iframe>
+
+  <div class="dashboard">
+    <aside class="sidebar">
+        <h3>CANDIDATE DASHBOARD</h3>
+        <nav class="sidebar-nav">
+          <a href="../Dashboard/index.html" class="nav-item1">
+            <img src="../../assets/img/profile.png" alt="Profile Icon" />
+            <span>Profile</span>
+          </a>
+          <a href="../Applied Job/index.html" class="nav-item">
+            <img src="../../assets/img/jobs.png" alt="Job Listing Icon" />
+            <span>Applied Jobs</span>
+          </a>
+          <a href="../My Courses In Progress/index.html" class="nav-item">
+            <img src="../../assets/img/My Courses.png" alt="Job Listing Icon" />
+            <span>My Courses</span>
+          </a>
+        </nav>
+        <a href="../../BeforeLogin/HomePageBeforeLogin/homePageBeforeLogin.html" class="logout">
+          <img src="../../assets/img/logout.png" alt="Logout Icon" />
+          <span>Log-out</span>
+        </a>
+      </aside>
+
+    <div class="content">
+      <h1>My Course</h1>
+
+      <div class="tabs">
+        <a href="../My Courses In Progress/index.html" class="tab active">In Progress</a>
+        <a href="../My Courses Complete/index.html" class="tab inactive">Complete</a>
+      </div>
+
+      <div class="table-header">
+        <span>Courses</span>
+        <span>Status</span>
+        <span>Deadline</span>
+        <span>Action</span>
+      </div>
+
+      <form class="course-form">
+        <div class="course-row">
+          <div class="course-info">
+            <div class="title">Course Name</div>
+            <div class="status progress">In Progress</div>
+            <div class="date">Month Date, Year</div>
+          </div>
+          <div class="actions">
+            <button type="button" class="continue-btn">Continue</button>
+          </div>
+        </div>
+        <!-- Repeat this block as needed -->
+      </form>
+    </div>
+  </div>
+  <iframe id="footer-frame" src="../../footer-main.html"></iframe>
+
+</body>
+</html>

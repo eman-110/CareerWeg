@@ -1,0 +1,124 @@
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #ffffff;
+    color: #05093B;
+  }
+  
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+  
+  .page-title {
+    font-size: 2.5rem;
+    font-weight: 600;
+  }
+  
+  .subtitle {
+    font-size: 1.25rem;
+    color: rgba(5, 9, 59, 0.6);
+    margin-bottom: 2rem;
+  }
+  
+  .job-card {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+    padding: 2rem;
+  }
+  
+  .posted-date {
+    color: #ACACAC;
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .job-title {
+    font-size: 1.75rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+  
+  .job-desc {
+    font-size: 1rem;
+    color: rgba(5, 9, 59, 0.6);
+    text-align: justify;
+  }
+  
+  .job-info {
+    margin-top: 1.5rem;
+    font-size: 1rem;
+    color: rgba(5, 9, 59, 0.9);
+    line-height: 1.8;
+  }
+  
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 1.5rem 0;
+    gap: 0.5rem;
+  }
+  
+  .tags span {
+    background-color: #C2C2C2;
+    color: white;
+    border-radius: 48px;
+    padding: 0.5rem 1.25rem;
+    font-size: 1rem;
+  }
+  
+  .attachment {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+  }
+  
+  .pdf-link {
+    display: inline-block;
+    margin-top: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: rgba(5, 9, 59, 0.8);
+    color: white;
+    border-radius: 48px;
+    text-decoration: none;
+    font-weight: 500;
+  }
+  
+  .apply-btn {
+    background-color: #00A693;
+    color: white;
+    font-size: 1.2rem;
+    padding: 0.75rem 2rem;
+    border: none;
+    border-radius: 48px;
+    cursor: pointer;
+  }
+  
+  iframe {
+    width: 100%;
+    border: none;
+  }
+  #header-frame {
+    height: 70px;
+  }
+  #footer-frame {
+    height: 410px;
+  } 
+
+
+  @media (max-width: 768px) {
+    .page-title {
+      font-size: 2rem;
+    }
+    .job-title {
+      font-size: 1.5rem;
+    }
+    .job-desc, .job-info {
+      font-size: 0.95rem;
+    }
+    .tags span {
+      font-size: 0.9rem;
+    }
+  }
+  

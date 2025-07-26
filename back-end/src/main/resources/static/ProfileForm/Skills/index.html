@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CareerWeg - Skills</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+  <div class="left-side">
+    <img src="../../assets/img/a (19).png" alt="Rocket">
+  </div>
+  <div class="right-side">
+    <img class="logo" src="../../assets/img/logo.png" alt="Logo">
+
+    <div class="profile-box">
+      <h2 class="profile-title">Create profile</h2>
+      <div class="profile-header">
+        <a href="../Language/index.html">
+            <img src="../../assets/img/vector-arrow.png" alt="Back" class="back-button">
+          </a>
+          
+        <span class="step-count">5/8</span>
+      </div>
+
+      <div class="progress-bar">
+        <div class="progress" style="width: 55%;"></div>
+      </div>
+
+      <div class="profile-content">
+        <h3>Skills</h3>
+        <p>Tell us your top 3 skills. Mention those that are the most relevant to your profession.</p>
+        <form action="/api/users/save-skills" method="POST">
+          <div class="tag-input-container">
+            <div id="tags"></div>
+            <input type="text" id="tag-input" placeholder="Type a skill and press Enter" />
+            <input type="hidden" name="skills" id="skills-hidden" />
+          </div>
+          <button type="submit" class="next-button">Next</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const tagInput = document.getElementById("tag-input");
+  const tagsContainer = document.getElementById("tags");
+  const skillsHidden = document.getElementById("skills-hidden");
+
+  let tags = [];
+
+  tagInput.addEventListener("keydown", function (e) {
+    if (e.key === "Enter" && tagInput.value.trim() !== "") {
+      e.preventDefault();
+      const skill = tagInput.value.trim();
+      if (!tags.includes(skill)) {
+        tags.push(skill);
+        updateTags();
+      }
+      tagInput.value = "";
+    }
+  });
+
+  function updateTags() {
+    tagsContainer.innerHTML = "";
+    tags.forEach((tag, index) => {
+      const tagEl = document.createElement("div");
+      tagEl.className = "tag";
+      tagEl.innerHTML = `${tag} <span onclick="removeTag(${index})">&times;</span>`;
+      tagsContainer.appendChild(tagEl);
+    });
+    skillsHidden.value = tags.join(",");
+  }
+
+  function removeTag(index) {
+    tags.splice(index, 1);
+    updateTags();
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CareerWeg Footer</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: #ffffff;
+    }
+
+    footer {
+      background-color: #EAFFFA;
+      padding: 40px 10%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      color: rgba(5, 9, 59, 0.5);
+    }
+
+  .footer-logo-desc {
+  flex: 1 1 250px;
+  max-width: 300px;
+  margin-right: 3px; /* NEW: gap between logo and columns */
+  }
+
+  .footer-logo-desc img {
+  height: 50px;
+  margin-bottom: 15px;
+  }
+
+
+    .footer-column {
+      flex: 1 1 180px;
+      margin-bottom: 20px;
+    }
+
+    .footer-column h3 {
+      color: #05093B;
+      font-size: 22px;
+      margin-bottom: 15px;
+    }
+
+    .footer-column a {
+      display: block;
+      color: rgba(5, 9, 59, 0.5);
+      text-decoration: none;
+      font-size: 17px;
+      margin-bottom: 10px;
+      transition: color 0.3s;
+    }
+
+    .footer-column a:hover {
+      color: #00A693;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding: 20px 10%;
+      font-size: 17px;
+      color: rgba(5, 9, 59, 0.5);
+      border-top: 1px solid #B7B7B7;
+      background-color: #EAFFFA;
+    }
+
+    @media (max-width: 768px) {
+      footer {
+        flex-direction: column;
+        padding: 40px 5%;
+      }
+
+      .footer-column, .footer-logo-desc {
+        max-width: 100%;
+      }
+
+      .footer-column h3 {
+        font-size: 20px;
+      }
+
+      .footer-column a {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <footer>
+    <div class="footer-logo-desc">
+      <img src="assets/img/logo.png" alt="CareerWeg Logo">
+      <p>CareerWeg empowers you to learn, rank, and earn with AI-driven skill assessments and a secure freelancing marketplace.</p>
+    </div>
+
+    <div class="footer-column">
+      <h3>Company</h3>
+      <a href="BeforeLogin/Home-Hire/hire.html#about" target="_inframe">About Us</a>
+      <a href="Hire/paymentplan/index.html" target="_inframe">CareerWeg Plus</a>
+    </div>
+
+    <div class="footer-column">
+      <h3>Candidate</h3>
+      <a href="Hire/Signup/index.html" target="_inframe">Post Job</a>
+      <a href="Hire/Signup/index.html" target="_inframe">Job Listing</a>
+    </div>
+
+    <div class="footer-column">
+      <h3>Support</h3>
+      <a href="faq.html" target="_inframe">FAQ</a>
+      <a href="help-center.html" target="_inframe">Help Center</a>
+      <a href="career.html" target="_inframe">Career</a>
+      <a href="privacy.html" target="_inframe">Privacy</a>
+    </div>
+
+    <div class="footer-column">
+      <h3>Contact Info</h3>
+      <a href="tel:+042-9999011">+042-9999011</a>
+      <a href="mailto:info@careerweg.com">Info@careerweg.com</a>
+      <address style="margin-top: 10px; font-style: normal;">
+       Lahore
+      </address>
+    </div>
+  </footer>
+
+  <div class="footer-bottom">
+    CareerWeg All Right Reserved, 2025
+  </div>
+
+  <script>
+    // Optional footer JavaScript logic can go here
+    // Example: dynamic year update
+    // document.querySelector(".footer-bottom").innerHTML = `CareerWeg All Right Reserved, ${new Date().getFullYear()}`;
+  </script>
+</body>
+</html>

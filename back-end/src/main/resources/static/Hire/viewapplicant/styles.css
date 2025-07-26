@@ -1,0 +1,164 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: #f8f9fa;
+    color: #333;
+}
+
+.container {
+    display: flex;
+}
+
+.nav-item img, .logout img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+.nav-item1 img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+ .sidebar {
+  width: 230px;
+  background-color: #eef0ff;
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+  border-radius: 10px;
+  margin: 30px;
+}
+
+.sidebar h3 {
+  font-size: 14px;
+  margin-bottom: 40px;
+  color: #4a4a4a;
+  letter-spacing: 0.5px;
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: rgba(5, 9, 59, 0.70);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 14px;
+  padding: 8px 0;
+}
+
+.nav-item1 {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #05093B;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 14px;
+  padding: 8px 0;
+}
+
+.nav-item:hover {
+  text-decoration: underline;
+}
+
+.logout {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #2d2d2d;
+  text-decoration: none;
+  margin-top: auto;
+  font-weight: 500;
+}
+
+
+.resume {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+    padding: 2rem;
+    background: #fff;
+}
+
+.header h1 {
+    font-size: 2rem;
+    margin: 0;
+    color: #111;
+}
+
+.header h2 {
+    color: #888;
+    font-size: 1.1rem;
+    font-weight: normal;
+    margin-bottom: 1rem;
+}
+
+.education, .experience {
+    margin-top: 2rem;
+}
+
+h3 {
+    color: #177c72;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+}
+
+.edu-entry, .exp-entry {
+    margin-bottom: 1.5rem;
+}
+
+.exp-entry p {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.sidebar-right {
+    padding-top: 2rem;
+    border-left: 1px solid #eee;
+    padding-left: 2rem;
+}
+
+.contact a, .contact span {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #177c72;
+    font-weight: 500;
+}
+
+.skills ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    margin: 1rem 0;
+}
+
+.skills h4, .languages h4 {
+    color: #177c72;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+}
+
+.languages p {
+    margin: 0.5rem 0;
+    color: #444;
+}
+iframe {
+    width: 100%;
+    border: none;
+  }
+  #header-frame {
+    height: 70px;
+  }
+  #footer-frame {
+    height: 410px;
+  }

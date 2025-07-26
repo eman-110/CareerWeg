@@ -1,0 +1,138 @@
+/* Reset and base */
+:root {
+  --primary-color: #00b894;
+  --secondary-color: #0a0a23;
+  --text-color: #0a0a23;
+  --background-color: #ffffff;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+.navbar .container {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: var(--background-color);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 1rem;
+}
+.nav-links li a {
+  padding: 0.5rem 1rem;
+  font-weight: 600;
+}
+
+.navbar .nav-links li a {
+  text-decoration: none;
+  color: #0a0a23;
+  font-weight: 600;
+}
+.navbar .btn {
+  background-color: #00b894;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+}
+.navbar .btn-dark {
+  background-color: #0a0a23;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+}
+/* Start Learning Section */
+.start-learning {
+  padding: 4rem 1rem;
+  background-color: var(--background-color);
+}
+
+.start-learning .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.start-learning h1 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 2rem;
+}
+
+
+
+.hero-buttons { margin: 20px 0; }
+    .btn-outline, .btn-filled { padding: 10px 20px; border: 2px solid #05093b; border-radius: 20px; background: none; color: #05093b; margin: 5px; cursor: pointer; }
+    .btn-filled { background: #05093b; color: white; }
+
+
+
+/* Grid Buttons */
+.grid-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  justify-content: center;
+}
+
+.grid-buttons button {
+  padding: 0.8rem 1.5rem;
+  min-width: 160px;
+  border: 2px solid var(--primary-color);
+  border-radius: 30px;
+  background: transparent;
+  color: var(--primary-color);
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.grid-buttons button:hover {
+  background-color: var(--primary-color);
+  color: #fff;
+}
+
+/* Centered Container (extra utility) */
+.centered-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  text-align: center;
+}
+
+iframe {
+  width: 100%;
+  border: none;
+}
+#header-frame {
+  height: 70px;
+}
+#footer-frame {
+  height: 410px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .grid-buttons {
+    gap: 1rem;
+  }
+  .toggle-buttons {
+    flex-wrap: wrap;
+  }
+}

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authentication Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        .test-section {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .info {
+            background-color: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+        .test-links {
+            margin-top: 20px;
+        }
+        .test-links a {
+            display: inline-block;
+            margin: 5px;
+            padding: 10px 15px;
+            background-color: #28a745;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .test-links a:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <h1>Authentication Test Page</h1>
+    
+    <div class="test-section">
+        <h3>1. Test Session</h3>
+        <button onclick="testSession()">Test Current Session</button>
+        <div id="session-result"></div>
+    </div>
+    
+    <div class="test-section">
+        <h3>2. Test API Endpoints</h3>
+        <button onclick="testWorkExperience()">Test Work Experience API</button>
+        <button onclick="testEducation()">Test Education API</button>
+        <button onclick="testLanguage()">Test Language API</button>
+        <div id="api-result"></div>
+    </div>
+    
+    <div class="test-section">
+        <h3>3. Login Form</h3>
+        <form id="login-form">
+            <input type="email" id="email" placeholder="Email" required><br><br>
+            <input type="password" id="password" placeholder="Password" required><br><br>
+            <button type="submit">Login</button>
+        </form>
+        <div id="login-result"></div>
+    </div>
+
+    <div class="test-section">
+        <h3>4. Quick Navigation Tests</h3>
+        <div class="test-links">
+            <a href="/ProfileForm/WorkExperience/index.html" target="_blank">Test Work Experience Page</a>
+            <a href="/ProfileForm/Education/index.html" target="_blank">Test Education Page</a>
+            <a href="/ProfileForm/Language/index.html" target="_blank">Test Language Page</a>
+            <a href="/AfterLogin/Dashboard/index.html" target="_blank">Test Dashboard</a>
+        </div>
+    </div>
+
+    <script>
+        async function testSession() {
+            const resultDiv = document.getElementById('session-result');
+            try {
+                const response = await fetch('/api/users/test-session', {
+                    credentials: 'include'
+                });
+                const text = await response.text();
+                
+                if (response.ok) {
+                    resultDiv.innerHTML = `<div class="result success">✅ ${text}</div>`;
+                } else {
+                    resultDiv.innerHTML = `<div class="result error">❌ ${text}</div>`;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `<div class="result error">❌ Error: ${error.message}</div>`;
+            }
+        }
+
+        async function testWorkExperience() {
+            const resultDiv = document.getElementById('api-result');
+            try {
+                const response = await fetch('/api/users/save-work-experiences', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    credentials: 'include',
+                    body: JSON.stringify([])
+                });
+                const text = await response.text();
+                
+                if (response.ok) {
+                    resultDiv.innerHTML = `<div class="result success">✅ Work Experience API: ${text}</div>`;
+                } else {
+                    resultDiv.innerHTML = `<div class="result error">❌ Work Experience API: ${text} (Status: ${response.status})</div>`;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `<div class="result error">❌ Work Experience API Error: ${error.message}</div>`;
+            }
+        }
+
+        async function testEducation() {
+            const resultDiv = document.getElementById('api-result');
+            try {
+                const response = await fetch('/api/users/save-educations', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    credentials: 'include',
+                    body: JSON.stringify([])
+                });
+                const text = await response.text();
+                
+                if (response.ok) {
+                    resultDiv.innerHTML = `<div class="result success">✅ Education API: ${text}</div>`;
+                } else {
+                    resultDiv.innerHTML = `<div class="result error">❌ Education API: ${text} (Status: ${response.status})</div>`;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `<div class="result error">❌ Education API Error: ${error.message}</div>`;
+            }
+        }
+
+        async function testLanguage() {
+            const resultDiv = document.getElementById('api-result');
+            try {
+                const response = await fetch('/api/users/save-languages', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    credentials: 'include',
+                    body: JSON.stringify([])
+                });
+                const text = await response.text();
+                
+                if (response.ok) {
+                    resultDiv.innerHTML = `<div class="result success">✅ Language API: ${text}</div>`;
+                } else {
+                    resultDiv.innerHTML = `<div class="result error">❌ Language API: ${text} (Status: ${response.status})</div>`;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `<div class="result error">❌ Language API Error: ${error.message}</div>`;
+            }
+        }
+
+        document.getElementById('login-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const resultDiv = document.getElementById('login-result');
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            try {
+                const formData = new FormData();
+                formData.append('email', email);
+                formData.append('password', password);
+                
+                const response = await fetch('/api/users/login', {
+                    method: 'POST',
+                    body: formData,
+                    credentials: 'include'
+                });
+                
+                if (response.ok) {
+                    resultDiv.innerHTML = `<div class="result success">✅ Login successful! Redirecting...</div>`;
+                    setTimeout(() => {
+                        window.location.href = '/ProfileForm/WorkExperience/index.html';
+                    }, 1000);
+                } else {
+                    resultDiv.innerHTML = `<div class="result error">❌ Login failed. Please check your credentials.</div>`;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `<div class="result error">❌ Error: ${error.message}</div>`;
+            }
+        });
+
+        // Auto-test session on page load
+        window.addEventListener('load', function() {
+            setTimeout(testSession, 500);
+        });
+    </script>
+</body>
+</html> 
