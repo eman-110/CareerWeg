@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Applicant</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+        
+<!-- Header -->
+<iframe id="header-frame" src="../../header-hire.html"></iframe>
+    <div class="container">
+        <aside class="sidebar">
+            <h3>EMPLOYEE DASHBOARD</h3>
+            <nav class="sidebar-nav">
+              <a href="../employeedashboard/dashboard.html" class="nav-item">
+                <img src="../../assets/img/profile.png" alt="Profile Icon" />
+                <span>Profile</span>
+              </a>
+              <a href="../joblisting/employeeJobListing.html" class="nav-item1">
+                <img src="../../assets/img/jobs.png" alt="Job Listing Icon" />
+                <span>Job Listing</span>
+              </a>
+            </nav>
+            <a href="../../BeforeLogin/HomePageBeforeLogin/homePageBeforeLogin.html" class="logout">
+              <img src="../../assets/img/logout.png" alt="Logout Icon" />
+              <span>Log-out</span>
+            </a>
+          </aside>
+
+        <main class="resume">
+            <div class="main-content">
+                <section class="header">
+                    <h1>Your Name</h1>
+                    <h2>Senior Product Designer</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ornare facilisis ultricies pellentesque proin varius pellentesque.</p>
+                </section>
+
+                <section class="education">
+                    <h3>Education Background</h3>
+                    <div class="edu-entry">
+                        <strong>Degree Name</strong> / University Name<br>
+                        <span>Start Date – End Date, location</span>
+                    </div>
+                    <div class="edu-entry">
+                        <strong>Degree Name</strong> / University Name<br>
+                        <span>Start Date – End Date, location</span>
+                    </div>
+                </section>
+
+                <section class="experience">
+                    <h3>Work Experience</h3>
+                    <div class="exp-entry">
+                        <strong>Job Title</strong> / Company Name<br>
+                        <span>Start Date – End Date, location</span>
+                        <p>Lorem ipsum dolor sit amet...</p>
+                    </div>
+                    <div class="exp-entry">
+                        <strong>Job Title</strong> / Company Name<br>
+                        <span>Start Date – End Date, location</span>
+                        <p>Lorem ipsum dolor sit amet...</p>
+                    </div>
+                    <div class="exp-entry">
+                        <strong>Job Title</strong> / Company Name<br>
+                        <span>Start Date – End Date, location</span>
+                        <p>Lorem ipsum dolor sit amet...</p>
+                    </div>
+                </section>
+            </div>
+
+            <aside class="sidebar-right">
+                <div class="contact">
+                    <a href="#">portfolio.com</a><br>
+                    <a href="mailto:example@gmail.com">example@gmail.com</a><br>
+                    <span>+01 000.000.0000</span><br>
+                    <span>Toronto, ON</span>
+                </div>
+
+                <div class="skills">
+                    <h4>Skills</h4>
+                    <ul>
+                        <li>Web and UI Design</li>
+                        <li>Design Systems</li>
+                        <li>Graphic Design</li>
+                        <li>Branding</li>
+                        <li>Prototyping, wireframing</li>
+                        <li>Low to High-Fidelity Design</li>
+                        <li>Illustration</li>
+                        <li>Motion Graphics</li>
+                        <li>3D Modelling + 3D Printing</li>
+                    </ul>
+                </div>
+
+                <div class="languages">
+                    <h4>Language</h4>
+                    <p>Name — Proficiency</p>
+                    <p>Name — Proficiency</p>
+                </div>
+            </aside>
+        </main>
+    </div>
+          <!-- Footer -->
+          <iframe id="footer-frame" src="../../footer-hire.html"></iframe>
+
+</body>
+<script>
+  document.addEventListener("DOMContentLoaded", async () => {
+  const params = new URLSearchParams(window.location.search);
+  const userId = params.get("userId");
+
+  if (!userId) {
+    alert("Missing user ID.");
+    return;
+  }
+
+  try {
+    const res = await fetch(`/api/users/${userId}/profile`);
+    if (!res.ok) throw new Error("User not found");
+
+    const user = await res.json();
+
+    // Set basic profile data
+    document.querySelector("h1").textContent = `${user.firstName} ${user.lastName}`;
+    document.querySelector("h2").textContent = user.profileTitle || "-";
+    document.querySelector("section.header p").textContent = user.profileDescription || "-";
+
+    // Contact info
+    const contact = document.querySelector(".contact");
+    contact.innerHTML = `
+      <a href="${user.portfolioLink || "#"}" target="_blank">${user.portfolioLink || "portfolio.com"}</a><br>
+      <a href="mailto:${user.email}">${user.email}</a><br>
+      <span>${user.phoneNumber}</span><br>
+      <span>${user.city}, ${user.country}</span>
+    `;
+
+    // Skills
+    const skillsList = (user.skills || "").split(",").map(s => `<li>${s.trim()}</li>`).join("");
+    document.querySelector(".skills ul").innerHTML = skillsList;
+
+    // Languages
+    const langRes = await fetch(`/api/users/${userId}/languages`);
+    const languages = await langRes.json();
+    document.querySelector(".languages").innerHTML = `
+      <h4>Language</h4>
+      ${languages.map(l => `<p>${l.name} — ${l.proficiency}</p>`).join("")}
+    `;
+
+    // Education
+    const eduRes = await fetch(`/api/users/${userId}/education`);
+    const educations = await eduRes.json();
+    const eduSection = document.querySelector(".education");
+    eduSection.innerHTML = `<h3>Education Background</h3>`;
+    educations.forEach(edu => {
+      eduSection.innerHTML += `
+        <div class="edu-entry">
+          <strong>${edu.degree}</strong> / ${edu.institution}<br>
+          <span>${edu.year}</span>
+        </div>`;
+    });
+
+    // Work Experience
+    const expRes = await fetch(`/api/users/${userId}/experience`);
+    const experiences = await expRes.json();
+    const expSection = document.querySelector(".experience");
+    expSection.innerHTML = `<h3>Work Experience</h3>`;
+    experiences.forEach(exp => {
+      expSection.innerHTML += `
+        <div class="exp-entry">
+          <strong>${exp.jobTitle}</strong> / ${exp.company}<br>
+          <span>${exp.fromDate} – ${exp.toDate}</span>
+          <p>${exp.description || ""}</p>
+        </div>`;
+    });
+
+  } catch (err) {
+    console.error(err);
+    alert("Failed to load profile.");
+  }
+});
+
+</script>
+  
+</html>

@@ -1,0 +1,590 @@
+/* General reset and font */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #ffffff;
+  }
+  
+  .container {
+    max-width: 1200px; /* or 1100px */
+    margin: 0 auto; /* CENTER the content */
+    padding: 0 1rem; /* optional side padding for smaller screens */
+  }
+  
+  
+  h1, h2, h3, p {
+    margin: 0;
+  }
+  
+  /* Highlight green text */
+  .highlight-green {
+    color: #00b894;
+  }
+  
+  /* Hero Section */
+  .hero-section {
+    padding: 4rem 1rem;
+  }
+  
+  .hero-content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .hero-text {
+    flex: 1 1 500px;
+  }
+  
+  .hero-text h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+  }
+  
+  .hero-text p {
+    margin-bottom: 2rem;
+    color: #555;
+  }
+  
+
+  .hero-buttons {
+    display: flex;
+    justify-content: center; /* <-- center horizontally */
+    gap: 1rem;               /* space between the buttons */
+    margin-top: 2rem;         /* optional: add space from paragraph */
+    flex-wrap: wrap;          /* for mobile responsiveness */
+  }
+  
+  .hero-image {
+    flex: 1 1 400px;
+    text-align: center;
+  }
+  
+  .hero-image img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  /* Button Styles */
+  .btn-dark, .btn-primary {
+    padding: 0.8rem 2rem;
+    border-radius: 30px;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    font-size: 1rem;
+  }
+  
+  .btn-dark {
+    background-color: #0a0a23;
+    color: #fff;
+  }
+  
+  .btn-primary {
+    background-color: #00b894;
+    color: #fff;
+  }
+  
+  .steps-section {
+    padding: 4rem 2rem;
+    border-radius: 20px;
+    margin: 4rem auto;
+    max-width: 1200px;
+  }
+  
+  .steps-cards {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  
+  .steps-card {
+    background-color: #1e1e40; /* Dark purple card */
+    border-radius: 20px;
+    padding: 2rem;
+    width: 300px;
+    text-align: center;
+    color: #ffffff; /* White text inside */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  .steps-card img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 1rem;
+    object-fit: contain;
+  }
+  
+  
+  
+  
+  /* Latest Freelance Posts */
+  .latest-posts {
+    padding: 4rem 1rem;
+    background-color: #fff;
+  }
+  
+  .latest-posts h2 {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 2rem;
+  }
+  
+  .post-cards {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  
+  .post-card {
+    background: #f9f9f9;
+    border-radius: 15px;
+    padding: 2rem;
+    width: 300px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  }
+  
+  .posted {
+    font-size: 0.9rem;
+    color: #888;
+  }
+  
+  .post-card h3 {
+    margin: 0.5rem 0;
+    font-size: 1.1rem;
+  }
+  
+  .description {
+    font-size: 0.9rem;
+    color: #555;
+    margin: 1rem 0;
+  }
+  
+  .price {
+    color: #00b894;
+    font-weight: bold;
+    margin: 0.5rem 0;
+  }
+  
+  .tags {
+    margin-top: 1rem;
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+  
+  .tags span {
+    background: #ddd;
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+  }
+  
+  .buttons {
+    margin-top: 1.5rem;
+    display: flex;
+    gap: 1rem;
+  }
+  
+  /* Why Freelancers Love Section */
+  .why-love {
+    background-color: #fff7f0;
+    padding: 6rem 2rem;
+  }
+  
+.why-love-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.icon-wrapper {
+  background-color: #0a0a23; /* Dark navy background */
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem; /* center it and give bottom margin */
+}
+
+.icon-wrapper img {
+  width: 35px;
+  height: 35px;
+  object-fit: contain;
+}
+
+
+  .why-image {
+    flex: 1 1 500px;
+    text-align: center;
+  }
+  
+  .why-image img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .why-text {
+    flex: 1 1 500px;
+  }
+  
+  .why-text h2 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 2rem;
+    color: #0a0a23;
+  }
+  
+  .features-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 2rem;
+  }
+  
+  .features-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .features-list img {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+  }
+  
+  .features-list h4 {
+    margin: 0;
+    font-size: 1.2rem;
+    color: #0a0a23;
+  }
+  
+  .features-list p {
+    margin: 0.3rem 0 0;
+    font-size: 1rem;
+    color: #555;
+  }
+  
+  .upgrade-btn {
+    display: inline-block;
+    margin-top: 2rem;
+    padding: 0.8rem 2rem;
+    background-color: #0a0a23;
+    color: white;
+    border-radius: 30px;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  
+  
+  /* Make buttons nicer */
+  button {
+    padding: 10px 20px;
+    border-radius: 30px;
+    background-color: #00b894;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+  }
+  .navbar .container {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: var(--background-color);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+  .nav-links {
+    display: flex;
+    list-style: none;
+    gap: 1rem;
+  }
+  .nav-links li a {
+    padding: 0.5rem 1rem;
+    font-weight: 600;
+  }
+  
+  .navbar .nav-links li a {
+    text-decoration: none;
+    color: #0a0a23;
+    font-weight: 600;
+  }
+  .navbar .btn {
+    background-color: #00b894;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+  }
+  .navbar .btn-dark {
+    background-color: #0a0a23;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+  }
+  
+  /* Make small cards like the job posts */
+  .card {
+    background: #f9f9f9;
+    border-radius: 10px;
+    padding: 1.5rem;
+    width: 300px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  }
+  .cta-section {
+    position: relative;
+    padding: 6rem 2rem;
+    background-color: #fff;
+  }
+  
+  .cta-grid {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .cta-text {
+    flex: 1 1 500px;
+  }
+  
+  .cta-text h2 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    color: #0a0a23;
+  }
+  
+  .cta-text p {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 2rem;
+  }
+  
+  .btn-primary {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    background-color: #00b894;
+    color: #fff;
+    border-radius: 30px;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  
+  .cta-image {
+    flex: 1 1 400px;
+    text-align: center;
+  }
+  .cta-image img {
+    max-width: 300px;  /* reduce the size */
+    width: 100%;
+    height: auto;
+  }
+  
+  .footer {
+    background: #e6f7f4;
+    margin-top: 4rem;
+  }
+  
+  .footer-top {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 4rem 2rem;
+  }
+  
+  .footer-about {
+    flex: 1 1 250px;
+  }
+  
+  .footer-links {
+    flex: 3 1 600px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  
+  .footer-links div {
+    flex: 1 1 150px;
+    margin-top: 1rem;
+  }
+  
+  .footer-links h4 {
+    margin-bottom: 1rem;
+  }
+  
+  .footer-links p {
+    margin: 0.3rem 0;
+    font-size: 0.9rem;
+  }
+  
+  .footer-bottom {
+    background: #d1ece9;
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.9rem;
+  }
+  .signup-banner {
+    position: relative;
+    background: #0a0a23;
+    padding: 4rem 2rem;
+    border-radius: 20px;
+    margin: 4rem auto;
+    max-width: 1200px; /* NEW: limit width */
+    width: 90%; /* NEW: responsive */
+    text-align: center;
+    overflow: hidden;
+  }
+  
+  .signup-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .signup-text h2 {
+    color: #fff;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    font-weight: 800;
+  }
+  
+  .signup-text .btn-primary {
+    background-color: #00b894;
+    color: white;
+    padding: 0.8rem 2rem;
+    border-radius: 30px;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  
+  /* Decorations */
+  .decorative {
+    position: absolute;
+    pointer-events: none;
+  }
+  
+  .top-left {
+    top: -30px;
+    left: -30px;
+    width: 120px;
+  }
+  
+  .top-right {
+    top: -30px;
+    right: -30px;
+    width: 120px;
+  }
+  
+  .arrow {
+    bottom: 40px;
+    left: 100px;
+    width: 70px;
+  }
+  
+  .bulb {
+    bottom: 30px;
+    right: 100px;
+    width: 50px;
+  }
+  
+  iframe {
+    width: 100%;
+    border: none;
+  }
+  #header-frame {
+    height: 70px;
+  }
+  #footer-frame {
+    height: 410px;
+  }
+
+  /* features.css */
+
+.features-section {
+  padding: 4rem 2rem;
+  background-color: #fff;
+}
+
+.features-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.features-wrapper {
+  background-color: #0a0a23;
+  padding: 4rem 2rem;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.feature-card {
+  background: #1e1e40;
+  padding: 2rem;
+  border-radius: 20px;
+  text-align: center;
+  width: 250px;
+  flex: 1 1 250px;
+}
+
+.feature-icon {
+  background-color: #29304d;
+  padding: 1rem;
+  border-radius: 20px;
+  margin-bottom: 1rem;
+}
+
+.feature-icon img {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+}
+
+.feature-card h3 {
+  color: white;
+  margin-bottom: 0.5rem;
+}
+
+.feature-card p {
+  color: #ccc;
+  font-size: 0.9rem;
+}
+
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .hero-content, .why-content {
+      flex-direction: column;
+      text-align: center;
+    }
+    .hero-buttons {
+      flex-direction: column;
+    }
+  }
+  

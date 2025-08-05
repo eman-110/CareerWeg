@@ -1,0 +1,11 @@
+:root {
+  --colorneutralshade-80: rgba(184, 189, 187, 1);
+  --colorprimarytint-10: rgba(230, 252, 241, 1);
+  --colorneutralshade-90: rgba(207, 212, 209, 1);
+  --typography-subtitle-medium-20-font-family: "Poppins", Helvetica;
+  --typography-subtitle-medium-20-font-weight: 500;
+  --typography-subtitle-medium-20-font-size: 20px;
+  --typography-subtitle-medium-20-letter-spacing: 0px;
+  --typography-subtitle-medium-20-line-height: 120.00000476837158%;
+  --typography-subtitle-medium-20-font-style: normal;
+}

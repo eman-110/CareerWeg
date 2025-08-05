@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Post a Job</title>
+  <link rel="stylesheet" href="styles.css" />
+  <!-- Choices.js CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css" />
+
+</head>
+<body>
+  <iframe id="header-frame" src="../../header-hire.html"></iframe>
+
+  <h1>Post a job</h1>
+  <p class="subtitle">Find the best talent for your company</p>
+
+  <div class="form-container">
+    <form action="/api/jobs/submit-job" method="POST" enctype="multipart/form-data">
+      <label>Job Title</label>
+      <input type="text" name="jobTitle" placeholder="Add job title" required />
+
+      <div class="row">
+        <div class="column">
+          <label>Required Skills</label>
+          <input type="text" name="skills" placeholder="e.g., Photoshop, Figma, React.js, SEO, etc." required />
+        </div>
+        <div class="column">
+            <label>Job Categories</label>
+            <select id ="category" name="category" multiple required>
+              <option value="QA">QA</option>
+              <option value="Front-end Development">Front-end Development</option>
+              <option value="Back-end Development">Back-end Development</option>
+              <option value="Full Stack Development">Full Stack Development</option>
+              <option value="Mobile App Development">Mobile App Development</option>
+              <option value="UI/UX Design">UI/UX Design</option>
+              <option value="DevOps">DevOps</option>
+              <option value="Cybersecurity">Cybersecurity</option>
+              <option value="Data Science">Data Science</option>
+              <option value="Machine Learning">Machine Learning</option>
+              <option value="Project Management">Project Management</option>
+              <option value="Content Writing">Content Writing</option>
+              <option value="Digital Marketing">Digital Marketing</option>
+              <option value="SEO">SEO</option>
+              <option value="Cloud Engineering">Cloud Engineering</option>
+            </select>            
+        </div>
+      </div>
+
+      <label>Budget</label>
+      <div class="row">
+        <div class="column">
+          <label>Min Budget (Rs)</label>
+          <input type="number" name="minBudget" />
+        </div>
+        <div class="column">
+          <label>Max Budget (Rs)</label>
+          <input type="number" name="maxBudget" />
+        </div>
+        <div class="column">
+          <label>Budget Type</label>
+          <select name="budgetType">
+            <option value="">Select...</option>
+            <option value="limited">Limited</option>
+            <option value="contract-based">Contract-Based</option>
+            <option value="project-based">Project-Based</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="column">
+          <label>Deadline</label>
+          <input type="date" name="deadline" />
+        </div>
+        <div class="column">
+          <label>Project Duration</label>
+          <select name="duration">
+            <option value="">Select...</option>
+            <option value="1 year">1 Year</option>
+            <option value="2 years">2 Years</option>
+            <option value="3 years">3 Years</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="column">
+          <label>Experience Level</label>
+          <select name="experience">
+            <option value="">Select...</option>
+            <option value="beginner">Beginner</option>
+            <option value="intermediate">Intermediate</option>
+            <option value="professional">Professional</option>
+            <option value="expert">Expert</option>
+          </select>
+        </div>
+        <div class="column">
+          <label>Attach File (optional)</label>
+          <input type="file" name="file" />
+        </div>
+      </div>
+
+      <label>Job Description</label>
+      <textarea name="description" rows="6" placeholder="Add your description..."></textarea>
+
+      <button type="submit">Post Job</button>
+    </form>
+  </div>
+
+  <iframe id="footer-frame" src="../../footer-hire.html"></iframe>
+  <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    new Choices('#category', {
+      removeItemButton: true,
+      maxItemCount: 10,
+      searchResultLimit: 10,
+      renderChoiceLimit: 20
+    });
+  });
+
+  </script>
+</body>
+</html>

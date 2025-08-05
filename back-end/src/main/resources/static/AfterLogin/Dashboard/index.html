@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Candidate Profile</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <iframe id="header-frame" src="../../header-main.html"></iframe>
+
+  <div class="dashboard-container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <h3>CANDIDATE DASHBOARD</h3>
+      <nav class="sidebar-nav">
+        <a href="../Dashboard/index.html" class="nav-item1">
+          <img src="../../assets/img/profile.png" alt="Profile Icon" />
+          <span>Profile</span>
+        </a>
+        <a href="../EditProfile/edit-profile.html" class="nav-item1">
+          <img src="../../assets/img/user-info-writing.png" alt="Edit profile Icon" />
+          <span>Edit Profile</span>
+        </a>
+
+        <a href="../Applied Job/index.html" class="nav-item">
+          <img src="../../assets/img/jobs.png" alt="Job Listing Icon" />
+          <span>Applied Jobs</span>
+        </a>
+        <a href="../My Courses In Progress/index.html" class="nav-item">
+          <img src="../../assets/img/My Courses.png" alt="Job Listing Icon" />
+          <span>My Courses</span>
+        </a>
+      </nav>
+      <a href="../../BeforeLogin/HomePageBeforeLogin/homePageBeforeLogin.html" class="logout">
+        <img src="../../assets/img/logout.png" alt="Logout Icon" />
+        <span>Log-out</span>
+      </a>
+    </aside>
+
+    <!-- Main Profile Content -->
+    <main class="main-content">
+      <div class="profile-card">
+        <section class="profile-header">
+          <h1 id="profile-name">Loading...</h1>
+          <h3 id="profile-title">Loading...</h3>
+          <p id="profile-description">Loading...</p>
+          <div class="contact" id="contact-info">Loading contact info...</div>
+        </section>
+
+        <section class="education" id="education-section">
+          <h2>Education Background</h2>
+        </section>
+
+        <section class="experience" id="experience-section">
+          <h2>Work Experience</h2>
+        </section>
+
+        <section class="skills" id="skills-section">
+          <h2>Skills</h2>
+        </section>
+
+        <section class="language" id="language-section">
+          <h2>Language</h2>
+        </section>
+
+        
+      </div>
+    </main>
+  </div>
+
+  <iframe id="footer-frame" src="../../footer-main.html"></iframe>
+
+  <!-- JS: Load and render profile data -->
+  <script>
+    document.addEventListener("DOMContentLoaded", async () => {
+      const res = await fetch("/api/users/full-profile");
+      if (!res.ok) return alert("Failed to load profile");
+
+      const { user, educations, experiences, languages } = await res.json();
+
+      document.getElementById("profile-name").textContent = `${user.firstName} ${user.lastName}`;
+      document.getElementById("profile-title").textContent = user.profileTitle || "-";
+      document.getElementById("profile-description").textContent = user.profileDescription || "-";
+
+      document.getElementById("contact-info").innerHTML = `
+        <p><strong>${user.portfolioLink || "No portfolio"}</strong></p>
+        <p>${user.email}</p>
+        <p>${user.phoneNumber}</p>
+        <p>${user.city}, ${user.country}</p>
+      `;
+
+      const eduHTML = educations.map(e => `
+        <div>
+          <p><strong>${e.degree}</strong> / ${e.institution}</p>
+          <p>${e.year}</p>
+        </div>`).join("");
+      document.getElementById("education-section").innerHTML += eduHTML;
+
+      const expHTML = experiences.map(e => `
+        <div>
+          <p><strong>${e.jobTitle}</strong> / ${e.company}</p>
+          <p>${e.fromDate} - ${e.toDate}</p>
+          <p>${e.description}</p>
+        </div>`).join("");
+      document.getElementById("experience-section").innerHTML += expHTML;
+
+      document.getElementById("skills-section").innerHTML += `
+        <p>${(user.skills || "").split(",").join("<br>")}</p>
+      `;
+
+      const langHTML = languages.map(l => `<p>${l.name}</p>`).join("");
+      document.getElementById("language-section").innerHTML += langHTML;
+    });
+  </script>
+</body>
+</html>

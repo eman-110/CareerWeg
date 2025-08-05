@@ -1,0 +1,106 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(180deg, #05093B 0%, #00A693 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+  }
+  
+  .main-wrapper {
+    max-width: 1200px;
+    width: 100%;
+    padding: 2rem;
+  }
+  
+  .card-container {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 40px;
+    overflow: hidden;
+    box-shadow: 0 4px 45px rgba(0, 0, 0, 0.1);
+  }
+  
+  @media(min-width: 768px) {
+    .card-container {
+      flex-direction: row;
+    }
+  }
+  
+  .left-panel {
+    flex: 1;
+    background: linear-gradient(221deg, #05093B 36%, #00A693 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+  }
+  
+  .left-panel img {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+  }
+  
+  .right-panel {
+    flex: 1;
+    padding: 3rem 2rem;
+    text-align: center;
+  }
+  
+  .check-icon {
+    font-size: 60px;
+    color: #00A693;
+    margin-bottom: 1rem;
+  }
+  
+  .right-panel h1 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #05093B;
+    margin-bottom: 1rem;
+  }
+  
+  .right-panel .desc {
+    font-size: 16px;
+    color: #2A1E17;
+    line-height: 1.6;
+  }
+  
+  .button-group {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+  }
+  
+  .btn {
+    text-decoration: none;
+    padding: 0.8rem 1.8rem;
+    font-weight: 600;
+    font-size: 16px;
+    border-radius: 50px;
+    color: white;
+    transition: background 0.3s ease;
+  }
+  
+  .btn.green {
+    background-color: #00A693;
+  }
+  
+  .btn.dark {
+    background-color: #05093B;
+  }
+  
+  .btn:hover {
+    opacity: 0.9;
+  }
+  

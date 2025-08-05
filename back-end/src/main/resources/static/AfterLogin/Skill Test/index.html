@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Skill Test</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <iframe id="header-frame" src="../../header-main.html"></iframe>
+
+  <div class="container">
+    <header>
+      <h1>Skill Test</h1>
+      <p class="subtitle">Test real skills, hire with confidence</p>
+    </header>
+
+    <section class="card">
+      <h2>Adobe Illustrator</h2>
+      <p class="description">
+        Create a ClickUp-themed mockup post in Adobe Illustrator and upload the source file here in .ai format.<br/>
+      </p>
+
+      <form class="answer-form" id="uploadForm" enctype="multipart/form-data">
+        <label for="fileInput">Upload your .ai or .psd file:</label><br/>
+        <input 
+          type="file" 
+          name="file" 
+          id="fileInput" 
+          accept=".ai,.psd" 
+          required
+        />
+        <button type="submit">Submit</button>
+      </form>
+    </section>
+  </div>
+
+  <iframe id="footer-frame" src="../../footer-main.html"></iframe>
+
+  <script>
+    document.getElementById("uploadForm").addEventListener("submit", function(event) {
+      event.preventDefault(); // prevent default form submission
+
+      const form = event.target;
+      const formData = new FormData(form);
+
+      fetch("/upload-skill-file", {
+        method: "POST",
+        body: formData
+      })
+      .then(response => {
+        if (!response.ok) throw new Error("Upload failed");
+        return response.text();
+      })
+      .then(() => {
+        // Redirect on success
+        window.location.href = "/afterlogin/skill%20test/skill_submit.html";
+      })
+      .catch(err => {
+        alert("Upload failed: " + err.message);
+      });
+    });
+  </script>
+</body>
+</html>

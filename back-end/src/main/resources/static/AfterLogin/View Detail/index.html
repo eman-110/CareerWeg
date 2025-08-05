@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Job Detail</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <iframe id="header-frame" src="../../header-main.html"></iframe>
+
+  <div class="container">
+    <h1 class="page-title">Job Detail</h1>
+    <p class="subtitle">Browse opportunities tailored to your skills and expertise</p>
+
+    <form class="job-card" method="post" action="/api/jobs/apply-job">
+      <!-- Hidden job ID input for submission -->
+      <input type="hidden" name="jobId" id="hidden-job-id" />
+
+      <p class="posted-date" id="job-status">Loading...</p>
+      <h2 class="job-title" id="job-title">Loading...</h2>
+
+      <h3>Description</h3>
+      <p class="job-desc" id="job-desc">Loading job description...</p>
+
+      <div class="job-info" id="job-info">
+        💰 ... <br/>
+        📅 Deadline: ... <br/>
+        🕒 Duration: ... <br/>
+        ⭐ Experience Level: ...
+      </div>
+
+      <div class="tags" id="job-tags">
+        <!-- Tags will be injected here -->
+      </div>
+
+      <div class="attachment" id="job-attachment" style="display: none;">
+        📎 Attachments:
+        <a href="#" id="job-file" class="pdf-link" download>Download File</a>
+      </div>
+
+      <button class="apply-btn" type="submit">Apply</button>
+    </form>
+  </div>
+
+  <iframe id="footer-frame" src="../../footer-main.html"></iframe>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", async () => {
+      const params = new URLSearchParams(window.location.search);
+      const jobId = params.get("jobId");
+      if (!jobId) return alert("No job ID provided in URL.");
+
+      try {
+        const res = await fetch(`/api/jobs/${jobId}`);
+        if (!res.ok) throw new Error("Job not found");
+
+        const job = await res.json();
+        const deadline = new Date(job.deadline);
+        const today = new Date();
+        const isExpired = deadline < today;
+        const status = isExpired ? "Expired" : "Active";
+
+        document.getElementById("hidden-job-id").value = job.id;
+        document.getElementById("job-status").textContent = `Status: ${status}`;
+        document.getElementById("job-title").textContent = job.jobTitle;
+        document.getElementById("job-desc").textContent = job.description || "No description provided.";
+
+        document.getElementById("job-info").innerHTML = `
+          💰 Rs ${job.minBudget || 0} - ${job.maxBudget || 0} | ${job.budgetType || "Fixed"} <br/>
+          📅 Deadline: ${deadline.toLocaleDateString()} <br/>
+          🕒 Duration: ${job.duration || "-"} <br/>
+          ⭐ Experience Level: ${job.experience || "-"}
+        `;
+
+        const tagsContainer = document.getElementById("job-tags");
+        tagsContainer.innerHTML = (job.category || "")
+          .split(",")
+          .map(cat => `<span>${cat.trim()}</span>`)
+          .join("");
+
+        if (job.attachmentUrl) {
+          document.getElementById("job-attachment").style.display = "block";
+          document.getElementById("job-file").href = job.attachmentUrl;
+        }
+      } catch (err) {
+        alert("Failed to load job details.");
+        console.error(err);
+      }
+    });
+  </script>
+</body>
+</html>

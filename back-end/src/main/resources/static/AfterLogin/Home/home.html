@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CareerWeg - Home</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    :root {
+      --primary-color: #00b894;
+      --secondary-color: #0a0a23;
+      --text-color: #333;
+      --background-color: #fff;
+      --accent-color: #6c5ce7;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      color: var(--text-color);
+      background-color: var(--background-color);
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: var(--background-color);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 1rem;
+    }
+    .nav-links li a {
+      padding: 0.5rem 1rem;
+      font-weight: 600;
+    }
+    .btn, .btn-dark {
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-weight: bold;
+    }
+    .btn {
+      background-color: var(--primary-color);
+      color: #fff;
+    }
+    .btn-dark {
+      background-color: var(--secondary-color);
+      color: #fff;
+    }
+    .hero-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      flex-wrap: wrap;
+      padding: 4rem 2rem;
+    }
+    .hero-text {
+      flex: 1 1 500px;
+    }
+    .hero-text h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+    }
+    .hero-text .highlight {
+      color: var(--primary-color);
+    }
+    .hero-text p {
+      margin-top: 1rem;
+      font-size: 1.2rem;
+    }
+    .hero-buttons {
+      margin-top: 2rem;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .hero-image {
+      flex: 1 1 500px;
+      text-align: center;
+    }
+    .hero-image img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
+    .btn-filled {
+      background: var(--primary-color);
+      color: #fff;
+      padding: 0.8rem 1.5rem;
+      border: none;
+      border-radius: 30px;
+      font-size: 1rem;
+    }
+    .btn-outline {
+      background: transparent;
+      color: var(--primary-color);
+      border: 2px solid var(--primary-color);
+      padding: 0.8rem 1.5rem;
+      border-radius: 30px;
+      font-size: 1rem;
+    }
+    section {
+      padding: 4rem 2rem;
+    }
+    .features, .course-grid, .job-list, .footer-top {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .feature, .course-card, .job-item, .footer-links div {
+      background: #f9f9f9;
+      padding: 2rem;
+      border-radius: 10px;
+      text-align: center;
+    }
+    .courses h2, .jobs h2, .upgrade h2, .about h2, .cta h2, .footer-top h3 {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+    .course-card img, .hero img, .feature img, .about img, .footer-top img {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 1rem;
+    }
+	.features img, .feature img {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+  margin: 0 auto;
+}
+
+    .join-btn {
+      margin-top: 1rem;
+      background: var(--primary-color);
+      border: none;
+      padding: 0.5rem 1.5rem;
+      border-radius: 30px;
+      color: #fff;
+      cursor: pointer;
+    }
+    .footer {
+      background: var(--secondary-color);
+      color: #fff;
+      padding-top: 4rem;
+    }
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .footer-bottom {
+      text-align: center;
+      margin-top: 2rem;
+      padding: 1rem;
+      font-size: 0.9rem;
+      background: #111;
+    }
+
+    body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  background: #f9f9f9;
+  padding: 0;
+}
+
+.courses-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.course-card {
+  width: 310px;
+  background: white;
+  border-radius: 14px;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.course-image {
+  width: 100%;
+  height: auto;
+  border-radius: 14px 14px 0 0;
+}
+
+.course-info {
+  padding: 16px;
+  position: relative;
+}
+
+.category {
+  color: rgba(5, 9, 59, 0.6);
+  font-weight: 500;
+  font-size: 16px;
+  text-align: left;
+}
+
+.stars {
+  color: #00A693;
+  font-size: 16px;
+  position: absolute;
+  right: 16px;
+  top: 16px;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 500;
+  margin: 10px 0 5px;
+  color: #05093B;
+  text-align: left;
+}
+
+.price {
+  color: #00A693;
+  font-size: 18px;
+  font-weight: 600;
+  text-align: left;
+}
+
+.divider {
+  height: 1px;
+  background: #ACACAC;
+  margin: 15px 0;
+}
+
+.details {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  font-size: 14px;
+  color: rgba(5, 9, 59, 0.6);
+  font-weight: 500;
+  gap: 2px;
+}
+
+.join-button {
+  background: #00A693;
+  color: white;
+  font-family: Roboto, sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  padding: 12px 0;
+  margin: 16px;
+  border-radius: 96px;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+}
+
+
+    @media (max-width: 768px) {
+      .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .nav-links {
+        flex-direction: column;
+        gap: 0.5rem;
+        margin-top: 1rem;
+      }
+      .courses-container {
+    flex-direction: column;
+    align-items: center;
+  }
+      .hero-content {
+        flex-direction: column;
+        text-align: center;
+      }
+      .hero-buttons {
+        flex-direction: column;
+      }
+    }
+    @media (max-width: 480px) {
+      .hero-text h1 {
+        font-size: 1.8rem;
+      }
+      .hero-text p {
+        font-size: 1rem;
+      }
+    }
+    iframe {
+      width: 100%;
+      border: none;
+    }
+    #header-frame {
+      height: 70px;
+    }
+    #footer-frame {
+      height: 410px;
+    }
+  </style>
+</head>
+
+<body>
+
+<iframe id="header-frame" src="../../header-main.html"></iframe>
+
+<!-- Hero Section -->
+<section style="padding: 4rem  2rem; background-color: #fff;">
+  <div style="max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 2rem;">
+
+    <!-- Left Text -->
+    <div style="flex: 1 1 500px;">
+      <h1 style="font-size: 2.5rem; font-weight: 800; margin-bottom: 1.5rem;">
+        Your Path To <span style="color: #00b894;">Skills, Success</span> And <span style="color: #00b894;">Opportunity!</span>
+      </h1>
+      <p style="font-size: 1.1rem; color: #555; margin-bottom: 2rem;">
+        CareerWeg helps users learn, rank, and earn through AI-driven skill development and freelancing opportunities.
+      </p>
+      <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+        <a href="../Roadmap/index.html" style="background-color: #0a0a23; color: white; padding: 0.8rem 1.5rem; border-radius: 30px; font-weight: 600; text-decoration: none;">
+          Start Learning
+        </a>
+        <a href="../Job Search/index.html" style="background-color: #00b894; color: white; padding: 0.8rem 1.5rem; border-radius: 30px; font-weight: 600; text-decoration: none;">
+          Freelancing Platform
+        </a>
+      </div>
+    </div>
+
+    <!-- Right Image -->
+    <div style="flex: 1 1 500px; text-align: center;">
+      <img src="../../assets/img/hero-image.png" alt="Hero Illustration" style="max-width: 100%; height: auto;">
+    </div>
+
+  </div>
+</section>
+
+
+<!-- features section -->
+<section style="padding: 4rem 2rem; background-color: #fff;">
+  <div style="max-width: 1200px; margin: 0 auto;">
+    
+    <div style="background-color: #0a0a23; padding: 4rem 2rem; border-radius: 20px;">
+      <div style="display: flex; justify-content: center; align-items: stretch; gap: 2rem; flex-wrap: nowrap;">
+
+        <!-- Feature 1 -->
+        <div style="background: #1e1e40; padding: 2rem; border-radius: 20px; text-align: center; width: 250px;">
+          <div style="background-color: #29304d; padding: 1rem; border-radius: 20px; margin-bottom: 1rem;">
+            <img src="../../assets/img/certification 1.png" alt="Certification" style="width: 50px; height: 50px; object-fit: contain;">
+          </div>
+          <h3 style="color: white; margin-bottom: 0.5rem;">Learn & Get Certified</h3>
+          <p style="color: #ccc; font-size: 0.9rem;">
+            Learn in-demand skills through structured courses and earn certifications to boost your credibility.
+          </p>
+        </div>
+
+        <!-- Feature 2 -->
+        <div style="background: #1e1e40; padding: 2rem; border-radius: 20px; text-align: center; width: 250px;">
+          <div style="background-color: #29304d; padding: 1rem; border-radius: 20px; margin-bottom: 1rem;">
+            <img src="../../assets/img/exam 1.png" alt="Rank Skills" style="width: 50px; height: 50px; object-fit: contain;">
+          </div>
+          <h3 style="color: white; margin-bottom: 0.5rem;">Rank & Showcase Skills</h3>
+          <p style="color: #ccc; font-size: 0.9rem;">
+            Take assessments, rank your skills, and build a standout profile to attract clients.
+          </p>
+        </div>
+
+        <!-- Feature 3 -->
+        <div style="background: #1e1e40; padding: 2rem; border-radius: 20px; text-align: center; width: 250px;">
+          <div style="background-color: #29304d; padding: 1rem; border-radius: 20px; margin-bottom: 1rem;">
+            <img src="../../assets/img/online-test 1.png" alt="Freelance Work" style="width: 50px; height: 50px; object-fit: contain;">
+          </div>
+          <h3 style="color: white; margin-bottom: 0.5rem;">Find Freelance Work</h3>
+          <p style="color: #ccc; font-size: 0.9rem;">
+            Showcase your expertise, get hired by verified clients, and earn securely on CareerWeg's platform.
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- courses section -->
+
+<section id="PopularCourses" style="padding: 4rem 2rem; background-color: #fff;">
+  <div style="max-width: 1200px; margin: 0 auto;">
+
+    <h2 style="text-align: center; font-size: 2rem; font-weight: 700; margin-bottom: 3rem;">
+      Popular Courses
+    </h2>
+
+    <div class="courses-container">
+      <div class="course-card">
+      <img src="../../assets/img/Illustrator.png" alt="Course Thumbnail" class="course-image">
+      <div class="course-info">
+        <div class="category">Graphic Designing</div>
+        <div class="stars">★★★★★</div>
+        <h2 class="title">Adobe Illustrator</h2>
+        <div class="price">$50</div>
+        <div class="divider"></div>
+        <div class="details">
+          <span>⏱ 13hr 46min</span>
+          <span>📚 30 Courses</span>
+        </div>
+      </div>
+      <a href="../Overview/Illustrator.html" class="join-button">Join Course</a>
+    </div>
+    <div class="course-card">
+      <img src="../../assets/img/Photoshop.png" alt="Course Thumbnail" class="course-image">
+      <div class="course-info">
+        <div class="category">Graphic Designing</div>
+        <div class="stars">★★★★★</div>
+        <h2 class="title">Adobe Photoshop</h2>
+        <div class="price">$99</div>
+        <div class="divider"></div>
+        <div class="details">
+          <span>⏱ 20hr 30min</span>
+          <span>📚 32 Courses</span>
+        </div>
+      </div>
+      <a href="../Overview/PhotoShop.html" class="join-button">Join Course</a>
+    </div>
+    <div class="course-card">
+      <img src="../../assets/img/Canva.png" alt="Course Thumbnail" class="course-image">
+      <div class="course-info">
+        <div class="category">Graphic Designing</div>
+        <div class="stars">★★★★★</div>
+        <h2 class="title">Canva</h2>
+        <div class="price">$38</div>
+        <div class="divider"></div>
+        <div class="details">
+          <span>⏱ 10hr 30min</span>
+          <span>📚 20 Courses</span>
+        </div>
+      </div>
+      <a href="../Overview/Canva.html" class="join-button">Join Course</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- Upgrade Section -->
+<section style="padding: 4rem 2rem; background-color: #fff;">
+  <div style="max-width: 1200px; margin: 0 auto; display: flex; align-items: center; flex-wrap: wrap; gap: 2rem;">
+
+    <!-- Left Image -->
+    <div style="flex: 1 1 500px; text-align: center;">
+      <img src="../../assets/img/OBJECTS (1).png" alt="Girl Working Illustration" style="max-width: 100%; height: auto; border-radius: 10px;">
+    </div>
+
+    <!-- Right Content -->
+    <div style="flex: 1 1 500px;">
+      <h2 style="font-size: 2.5rem; color: #0a0a23; font-weight: 800; margin-bottom: 2rem;">
+        Boost Your Career <br> with CareerWeg Plus!
+      </h2>
+
+      <!-- Feature 1 -->
+      <div style="display: flex; align-items: flex-start; margin-bottom: 1.5rem;">
+        <img src="../../assets/img/Group 375.png" alt="Payment Icon" style="width: 40px; height: 40px; margin-right: 1rem;">
+        <div>
+          <h3 style="margin: 0; font-size: 1.2rem;">Access All Courses with One Payment</h3>
+          <p style="margin: 0.5rem 0 0; color: #555;">Get unlimited access to all CareerWeg courses without paying separately for each!</p>
+        </div>
+      </div>
+
+      <!-- Feature 2 -->
+      <div style="display: flex; align-items: flex-start; margin-bottom: 2rem;">
+        <img src="../../assets/img/Group 374.png" alt="Visibility Icon" style="width: 40px; height: 40px; margin-right: 1rem;">
+        <div>
+          <h3 style="margin: 0; font-size: 1.2rem;">Higher Profile Visibility</h3>
+          <p style="margin: 0.5rem 0 0; color: #555;">Stand out with improved rankings, making it easier for clients to find and hire you.</p>
+        </div>
+      </div>
+
+      <!-- Button -->
+      <a href="../CareerWeg Plus/index.html" style="display: inline-block; background-color: #0a0a23; color: white; padding: 0.8rem 2rem; border-radius: 30px; font-size: 1rem; font-weight: 600; text-decoration: none;">
+        Upgrade Now!
+      </a>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- About Section -->
+<section id="about" style="padding: 4rem 2rem; background-color: #fff;">
+  <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; max-width: 1200px; margin: 0 auto;">
+
+    <!-- Left Text -->
+    <div style="flex: 1 1 500px; padding: 20px;">
+      <h2 style="font-size: 2rem; margin-bottom: 1rem;">About Us</h2>
+      <p style="font-size: 1rem; line-height: 1.6; color: #555;">
+        CareerWeg is a one-stop platform for skill development and freelancing, helping users learn, rank, and earn.
+        With AI-driven assessments, verified rankings, and a secure marketplace, we bridge the gap between education and employment,
+        empowering individuals to build successful careers.
+      </p>
+    </div>
+
+    <!-- Right Image -->
+    <div style="flex: 1 1 500px; text-align: center; padding: 20px;">
+      <img src="../../assets/img/FRAME.png" alt="CareerWeg About Us" style="max-width: 100%; height: auto; border-radius: 10px;">
+    </div>
+
+  </div>
+</section>
+
+<section style="padding: 4rem 2rem; background-color: #fff;">
+  <div style="max-width: 1200px; margin: 0 auto;">
+    <div style="background-color: #0a0a23; border-radius: 20px; padding: 4rem 2rem; text-align: center; position: relative;">
+      
+      <h2 style="color: white; font-size: 2rem; font-weight: 800; margin-bottom: 2rem;">
+        Start Your Journey with CareerWeg Plus!
+      </h2>
+
+      <a href="../CareerWeg Plus/index.html" style="display: inline-block; background-color: #00b894; color: white; padding: 0.8rem 2rem; border-radius: 30px; font-size: 1rem; font-weight: 600; text-decoration: none;">
+        Upgrade
+      </a>
+
+      <!-- Decorations -->
+      <img src="../../assets/img/arrow.png" alt="Arrow Decoration" style="position: absolute; top: 20px; left: 20px; width: 40px;">
+      <img src="../../assets/img/lightbulb.png" alt="Light Bulb Decoration" style="position: absolute; bottom: 20px; right: 20px; width: 30px;">
+
+    </div>
+  </div>
+</section>
+
+<iframe id="footer-frame" src="../../footer.html"></iframe>
+
+</body>
+</html>

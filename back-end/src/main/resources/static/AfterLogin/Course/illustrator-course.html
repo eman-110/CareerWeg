@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Adobe Illustrator Course</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<iframe id="header-frame" src="../../header-main.html"></iframe>
+
+<div class="container">
+  <h1>Adobe Illustrator</h1> 
+
+  <div class="content">
+    <aside class="sidebar">
+      <h2>Course Topics</h2>
+      <ul>
+        <li onclick="loadContent('tools')">Basic Tools & Shapes</li>
+        <li onclick="loadContent('trace')">Tracing Logos</li>
+        <li onclick="loadContent('guide')">Full Guide for Beginners</li>
+        <li onclick="loadContent('watch')">Create a Vector Wristwatch</li>
+        <li onclick="loadContent('layers')">Working with Layers & Templates</li>
+        <li onclick="loadContent('shape')">Shape Builder & Pathfinder</li>
+        <li onclick="loadContent('pen')">Pen Tool & Tracing Logos</li>
+      </ul>
+    </aside>
+
+    <div class="main-content">
+      <video id="videoPlayer" controls>
+        <source id="videoSource" src="../../assets/Video/Basic Tools & Shapes.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </div>
+
+  <div class="transcript">
+    <h3>Description</h3>
+    <p id="descriptionText">In this beginner-friendly Adobe Illustrator tutorial, Imran Ali Dina from GFXMentor introduces the essential tools and interface of Illustrator, focusing on creating basic shapes like rectangles, squares, and polygons, and teaching how to use the selection tool for resizing, rotating, and duplicating objects efficiently.</p>
+    <div class="navigation-buttons">
+      <button id="nextButton" class="nav-btn next-btn">Next</button>
+    </div>
+  </div>
+</div>
+
+<iframe id="footer-frame" src="../../footer-main.html"></iframe>
+
+<script src="script.js"></script>
+</body>
+</html>

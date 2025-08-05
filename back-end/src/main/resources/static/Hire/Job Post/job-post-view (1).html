@@ -1,0 +1,55 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Job Post View</title>
+    <link rel="stylesheet" href="job-view.css" />
+</head>
+<body>
+    <iframe id="header-frame" src="../../header.html"></iframe>
+    <div class="container">
+        <h1>Job Post</h1>
+        <p class="subtitle">Find the best talent for your company</p>
+
+        <form action="/submit-application" method="POST">
+            <div class="job-box">
+                <p class="posted-date">Posted Today</p>
+                <h2 id="job-title">Loading...</h2>
+                <input type="hidden" name="title" id="input-title" />
+
+                <h3>Description</h3>
+                <p id="job-description" class="description-text">Loading...</p>
+                <input type="hidden" name="description" id="input-description" />
+
+                <div class="job-info">
+                    <p id="job-budget"></p>
+                    <input type="hidden" name="budget" id="input-budget" />
+                    <p id="job-deadline"></p>
+                    <input type="hidden" name="deadline" id="input-deadline" />
+                    <p id="job-duration"></p>
+                    <input type="hidden" name="duration" id="input-duration" />
+                    <p id="job-experience"></p>
+                    <input type="hidden" name="experience" id="input-experience" />
+                </div>
+
+                <div class="tags" id="job-tags">
+                    <!-- Tags will be inserted here -->
+                </div>
+                <input type="hidden" name="tags" id="input-tags" />
+
+                <div class="attachments">
+                    <p>📎 Attachments:</p>
+                    <a href="#" id="job-attachment" class="btn">Brand Brief.pdf</a>
+                    <input type="hidden" name="attachment" value="Brand Brief.pdf" />
+                </div>
+
+                <button class="submit-btn" type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+
+    <iframe id="footer-frame" src="../../footer-hire.html"></iframe>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CareerWeg - Profile Page</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+    <div class="left-side">
+      <img src="../../assets/img/a (19).png" alt="Rocket">
+    </div>
+    <div class="right-side">
+      <img class="logo" src="../../assets/img/logo.png" alt="Logo">
+      <img class="top-img" src="../../assets/img/girl-boy.png" alt="Girl and Boy">
+      <h1>Hey <span id="user-name">Adam</span>. Ready for your <br>next big opportunity?</h1>
+
+      <div class="text">Build a profile to show the world what you can do</div>
+      <div class="divider"></div>
+      <div class="text">Apply on jobs posted from clients, around the world</div>
+      <div class="divider"></div>
+      <div class="text">Get paid safely and know we’re here to help</div>
+      
+      <button class="btn" onclick="window.location.href='../ProfileTitle/index.html'">Create Your Profile</button>
+    </div>
+  </div>
+  <script>
+    fetch('/session/user')
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById('user-name').innerText = data.name;
+      });
+  </script>
+  
+</body>
+</html>

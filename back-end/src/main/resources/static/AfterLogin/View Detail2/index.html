@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Apply Form</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <iframe id="header-frame" src="../../header-main.html"></iframe>
+  <div class="container">
+    <h1>Apply Form</h1>
+    <p class="subtitle">Search for your desired job matching your skills</p>
+
+    <form method="post" action="your_submit_handler.php" class="apply-form">
+      <div class="row between">
+        <div>
+          <h2 class="name">Your Name</h2>
+          <p class="title">Senior Product Designer</p>
+          <p class="bio">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ornare facilisis ultricies.</p>
+        </div>
+        <div class="contact-info">
+          <p class="link">portfolio.com</p>
+          <p>example@gmail.com</p>
+          <p>+01 000.000.0000</p>
+          <p>Toronto, ON</p>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3>Education Background</h3>
+        <div class="item">
+          <strong>Degree Name</strong> / University Name<br/>
+          <span class="small-text">Start Date - End Date, Location</span>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3>Work Experience</h3>
+        <div class="item">
+          <strong>Job Title</strong> / Company Name<br/>
+          <span class="small-text">Start Date - End Date, Location</span>
+          <p class="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Enim tincidunt fringilla nisl.</p>
+        </div>
+        <div class="item">
+          <strong>Job Title</strong> / Company Name<br/>
+          <span class="small-text">Start Date - End Date, Location</span>
+          <p class="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Enim tincidunt fringilla nisl.</p>
+        </div>
+      </div>
+
+      <div class="row between">
+        <div class="section half">
+          <h3>Skills</h3>
+          <ul>
+            <li>Web and UI Design</li>
+            <li>Design Systems</li>
+            <li>Graphic Design</li>
+            <li>Branding</li>
+            <li>Wireframing, Prototyping</li>
+            <li>Illustration</li>
+            <li>Motion Graphics</li>
+            <li>3D Modelling + Printing</li>
+          </ul>
+        </div>
+        <div class="section half">
+          <h3>Language</h3>
+          <div class="lang">
+            <span>Name</span><span>Proficiency</span>
+          </div>
+          <div class="lang">
+            <span>Name</span><span>Proficiency</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3>Cover Letter</h3>
+        <textarea name="cover_letter" rows="5" maxlength="500" placeholder="Write your cover letter..."></textarea>
+      </div>
+
+      <div class="submit-row">
+        <button type="submit" class="submit-btn">Submit</button>
+      </div>
+    </form>
+  </div>
+  <iframe id="footer-frame" src="../../footer-main.html"></iframe>
+
+</body>
+</html>

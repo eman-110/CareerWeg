@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CareerWeg Certificate</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Georgia', serif;
+      background: #f2f2f2;
+      text-align: center;
+    }
+.certificate-container {
+  background: white;
+  width: 760px; /* ⬅️ from 800px */
+  margin: 50px auto;
+  padding: 50px;
+  border: 10px solid #00b894;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  position: relative;
+}
+.name, .course, .date {
+  margin: 10px 0;
+}
+
+.spaced {
+  margin: 10px 0;
+}
+
+    h1 {
+      font-size: 36px;
+      color: #000042;
+    }
+    .subtitle {
+      font-size: 18px;
+      color: #555;
+      margin-bottom: 30px;
+    }
+    .content {
+      font-size: 20px;
+      margin: 40px 0;
+    }
+    .highlight {
+      font-weight: bold;
+      color: #00b894;
+    }
+    .footer {
+      margin-top: 40px;
+      font-size: 16px;
+    }
+    .download-btn {
+      margin-top: 30px;
+      padding: 10px 25px;
+      font-size: 16px;
+      background-color: #00b894;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+    }
+    .logo {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      width: 100px;
+    }
+  </style>
+</head>
+<body>
+  <div id="certificate" class="certificate-container">
+    <img src="/assets/img/logo.png" alt="CareerWeg Logo" class="logo" />
+    <h1>Certificate of Completion</h1>
+    <div class="subtitle">This certificate is proudly presented to</div>
+    <div class="content">
+  <div class="highlight name" id="name">[Student Name]</div>
+  <div class="spaced">for successfully completing the</div>
+  <div class="highlight course" id="course">[Course Title]</div>
+  <div class="spaced">course on</div>
+  <div class="highlight date" id="date">[Completion Date]</div>
+</div>
+
+    <div class="footer">CareerWeg · Empowering Your Future</div>
+  </div>
+
+  <button class="download-btn" onclick="downloadCertificate()">Download Certificate</button>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+  <script>
+    function getParam(name) {
+      const params = new URLSearchParams(window.location.search);
+      return decodeURIComponent(params.get(name) || '');
+    }
+
+    function populateCertificate() {
+      document.getElementById("name").textContent = getParam("name") || "Student Name";
+      document.getElementById("course").textContent = getParam("course") || "Course Title";
+      document.getElementById("date").textContent = getParam("date") || new Date().toLocaleDateString();
+    }
+
+  async function downloadCertificate() {
+    const element = document.getElementById("certificate");
+
+    const canvas = await html2canvas(element, {
+      scale: 3,
+      useCORS: true,
+      scrollX: 0,
+      scrollY: 0,
+      windowWidth: document.body.scrollWidth
+    });
+
+    const imgData = canvas.toDataURL("image/jpeg", 1.0);
+
+    const pdf = new jspdf.jsPDF({
+      orientation: "landscape",
+      unit: "px",
+      format: [canvas.width, canvas.height]
+    });
+
+    pdf.addImage(imgData, 'JPEG', 0, 0, canvas.width, canvas.height);
+    pdf.save("careerweg_certificate.pdf");
+  }
+
+
+
+
+    document.addEventListener("DOMContentLoaded", populateCertificate);
+  </script>
+</body>
+</html>

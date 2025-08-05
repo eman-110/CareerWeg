@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Payment Form</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="form-wrapper">
+      <div class="logo-section">
+        <img src="../../assets/img/logo symbol.png" alt="Logo" class="logo-symbol" />
+        <img src="../../assets/img/logo text.png" alt="CareerWeg" class="logo-text" />
+      </div>
+
+      <form class="payment-form" onsubmit="event.preventDefault(); saveCourseAndRedirect();">
+        <h2>Complete registration payment</h2>
+
+        <fieldset>
+          <legend>Personal details</legend>
+          <div class="grid-2">
+            <input type="text" placeholder="Address line" required>
+            <input type="text" placeholder="City" required>
+            <input type="text" placeholder="State" required>
+            <input type="text" placeholder="Postal code" required>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Payment methods</legend>
+          <div class="payment-methods">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="Visa" />
+            <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Stripe_logo%2C_revised_2016.svg" alt="Stripe" />
+            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal" />
+            <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Mastercard-logo.png" alt="MasterCard" />
+            <img src="https://upload.wikimedia.org/wikipedia/commons/5/5a/Google_Pay_Logo.svg" alt="GPay" />
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Card details</legend>
+          <input type="text" placeholder="Cardholder's name" required>
+          <input type="text" placeholder="Card number" required>
+          <div class="grid-2">
+            <input type="text" placeholder="Expiry" required>
+            <input type="text" placeholder="CVC" required>
+          </div>
+        </fieldset>
+
+        <button type="submit" class="enroll-btn">Next</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    function getCourseFromURL() {
+      const params = new URLSearchParams(window.location.search);
+      return params.get("course") || "Unknown Course";
+    }
+
+    function saveCourseAndRedirect() {
+      const courseName = getCourseFromURL();
+
+      fetch("/api/enrollments/enroll", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ courseName })
+      })
+      .then(res => {
+        if (res.ok) {
+          window.location.href = "../My Courses In Progress/index.html";
+        } else {
+          alert("Enrollment failed. Please try again.");
+        }
+      })
+      .catch(error => {
+        console.error("Error:", error);
+        alert("Server error occurred.");
+      });
+    }
+  </script>
+</body>
+</html>

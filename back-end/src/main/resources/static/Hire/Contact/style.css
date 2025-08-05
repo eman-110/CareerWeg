@@ -1,0 +1,125 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(180deg, #05093B 0%, #00A693 100%);
+    color: #05093B;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .container {
+    max-width: 1200px;
+    width: 100%;
+    background: white;
+    border-radius: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    overflow: hidden;
+    box-shadow: 0px 4px 45px rgba(0, 0, 0, 0.12);
+  }
+  
+  .illustration {
+    flex: 1;
+    min-width: 300px;
+    background: linear-gradient(221deg, #05093B 36%, #00A693 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+  }
+  
+  .illustration img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .form-wrapper {
+    flex: 1;
+    min-width: 300px;
+    padding: 2rem;
+  }
+  
+  .form-wrapper h2 {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+  
+  .form-wrapper h3 {
+    font-size: 20px;
+    font-weight: 600;
+  }
+  
+  .form-wrapper p {
+    font-size: 14px;
+    color: rgba(5, 9, 59, 0.6);
+    margin-bottom: 1.5rem;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+  
+  .row {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  
+  .input-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .input-group label {
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+  }
+  
+  .input-group input {
+    padding: 0.6rem;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+  }
+  
+  .input-group.full {
+    width: 100%;
+  }
+  
+  .save-btn {
+    margin-top: 1rem;
+    background: #05093B;
+    color: white;
+    padding: 0.8rem 2rem;
+    border: none;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    align-self: center;
+  }
+  
+  @media (max-width: 768px) {
+    .container {
+      flex-direction: column;
+    }
+  
+    .row {
+      flex-direction: column;
+    }
+  
+    .save-btn {
+      width: 100%;
+    }
+  }
+  

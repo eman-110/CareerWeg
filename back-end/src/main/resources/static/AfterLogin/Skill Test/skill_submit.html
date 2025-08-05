@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Skill Test Result</title>
+  <link rel="stylesheet" href="style_skill.css" />
+</head>
+<body>
+  <iframe id="header-frame" src="../../header-main.html"></iframe>
+
+  <div class="container">
+    <header>
+      <h1>Skill Test Results</h1>
+      <p class="subtitle">Here’s how you performed in the <strong>Adobe Illustrator</strong> Skill Test</p>
+    </header>
+
+    <section class="card">
+      <h1 class="heading">Score</h1>
+
+      <table class="score-table">
+        <thead>
+          <tr>
+            <th>Metric</th>
+            <th>Score/Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Total Score</td>
+            <td>85/100</td>
+          </tr>
+          <tr>
+            <td>Time Taken</td>
+            <td>10 min</td>
+          </tr>
+          <tr>
+            <td>Percentile Rank</td>
+            <td>Top 15%</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <button class="next-btn" onclick="markCourseComplete()">Next</button>
+    </section>
+  </div>
+
+  <iframe id="footer-frame" src="../../footer-main.html"></iframe>
+
+  <script>
+    function markCourseComplete() {
+      const courseName = "Adobe Illustrator";
+
+      fetch("/api/enrollments/complete-by-name", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams({ courseName })
+      })
+      .then(response => {
+        if (response.ok) {
+          window.location.href = "../My Courses Complete/index.html";
+        } else {
+          alert("Could not mark course as complete.");
+        }
+      })
+      .catch(err => {
+        console.error("Error:", err);
+        alert("Server error.");
+      });
+    }
+  </script>
+</body>
+</html>

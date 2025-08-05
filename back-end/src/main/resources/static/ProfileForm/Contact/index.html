@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CareerWeg - Contact Info</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <div class="container">
+    <div class="left-side">
+      <img src="../../assets/img/a (19).png" alt="Rocket Image" />
+    </div>
+
+    <div class="right-side">
+      <img class="logo" src="../../assets/img/logo.png" alt="Logo" />
+      <h2 class="profile-title">Create profile</h2>
+      <div class="profile-header">
+        <a href="../Portfolio/index.html">
+          <img src="../../assets/img/vector-arrow.png" alt="Back" class="back-button">
+        </a>
+        <span class="step-count">8/8</span>
+      </div>
+
+      <div class="progress-bar"><div class="progress" style="width: 100%"></div></div>
+
+      <div class="form-content">
+        <h3>Contact information</h3>
+        <p>Please enter your contact information below</p>
+        <form action="/api/users/save-contact-info" method="POST">
+          <div class="form-grid">
+            <input type="text" name="firstName" placeholder="First Name*" required />
+            <input type="text" name="lastName" placeholder="Last Name*" required />
+            <input type="text" name="address" placeholder="Address*" required />
+            <input type="text" name="city" placeholder="City Name*" required />
+            <input type="text" name="country" placeholder="Country*" required />
+            <input type="email" name="email" placeholder="Email Account" required />
+            <input type="tel" name="phoneNumber" placeholder="Phone number" required />
+          </div>
+          <button type="submit" class="next-button">Save</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CareerWeg - Java Developer Course</title>
+  <link rel="stylesheet" href="/careerweg/webpages/styles.css">
+  <style>
+    :root {
+      --primary-color: #00b894;
+      --secondary-color: #0a0a23;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      color: #333;
+      background: #fff;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 2rem;
+    }
+
+    .course-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+    .course-header-text {
+      max-width: 600px;
+    }
+    .course-header h1 {
+      font-size: 2.5rem;
+      color: var(--secondary-color);
+      margin-bottom: 1rem;
+    }
+    .course-header p {
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+      color: #666;
+    }
+    .course-header img {
+      max-width: 350px;
+      width: 100%;
+    }
+    .enroll-btn {
+      background-color: var(--primary-color);
+      color: #fff;
+      padding: 0.8rem 1.5rem;
+      border: none;
+      border-radius: 30px;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    /* Course Summary */
+    .course-summary {
+      display: flex;
+      justify-content: space-around;
+      margin: 3rem 0;
+      padding: 1.5rem;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .summary-item {
+      text-align: center;
+      flex: 1 1 150px;
+    }
+    .summary-item img {
+      width: 50px;
+      height: 50px;
+      margin-bottom: 0.5rem;
+    }
+    .summary-item h3 {
+      font-size: 1.2rem;
+      margin-top: 0.5rem;
+      color: var(--secondary-color);
+    }
+
+    /* Objective and Details */
+    .course-objective {
+      margin-top: 3rem;
+    }
+    .course-objective h2 {
+      color: var(--secondary-color);
+      margin-bottom: 1rem;
+    }
+    .course-objective p {
+      font-size: 1rem;
+      color: #555;
+      margin-bottom: 2rem;
+    }
+
+    .details {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      align-items: flex-start;
+    }
+
+    .details-left {
+      flex: 1 1 400px;
+    }
+
+    .details-left h3 {
+      margin-top: 1.5rem;
+      color: var(--secondary-color);
+    }
+    .details-left ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 0.5rem;
+    }
+    .details-left ul li {
+      margin-bottom: 0.5rem;
+    }
+    .details-left ul li::before {
+      content: '✔️';
+      margin-right: 0.5rem;
+      color: var(--primary-color);
+    }
+
+    .details-right {
+      flex: 1 1 400px;
+      background: #f9f9f9;
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+    .details-right table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .details-right th {
+      text-align: left;
+      color: var(--primary-color);
+      font-size: 1rem;
+      padding-bottom: 1rem;
+    }
+    .details-right td {
+      padding: 0.8rem 0;
+      font-size: 0.95rem;
+      border-bottom: 1px solid #ddd;
+    }
+    iframe {
+    width: 100%;
+    border: none;
+  }
+  #header-frame {
+    height: 70px;
+  }
+  #footer-frame {
+    height: 410px;
+  }
+
+
+    @media (max-width: 768px) {
+      .course-header {
+        flex-direction: column;
+        text-align: center;
+      }
+      .details {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <iframe id="header-frame" src="../../header-main.html"></iframe>
+
+
+  <div class="container">
+
+    <div class="course-header">
+      <div class="course-header-text">
+        <h1>Canva Design Mastery</h1>
+        <p>Unlock your creativity with Canva — an easy-to-use graphic design platform perfect for creating social media posts, marketing materials, and stunning visuals without needing advanced design skills.</p>
+<a href="../Payment/index.html?course=Canva%20Design%20Mastery" class="enroll-btn">Enroll for $38</a>
+
+      </div>
+      <div class="course-header-image">
+        <img src="../../assets/img/Hand coding-bro 1.png" alt="Canva Design Course"> <!-- Add a suitable image -->
+      </div>
+    </div>
+  
+    <div class="course-summary">
+      <div class="summary-item">
+        <img src="../../assets/img/calendar.png" alt="Duration">
+        <h3>4 Weeks</h3>
+      </div>
+      <div class="summary-item">
+        <img src="../../assets/img/level-up.png" alt="Level">
+        <h3>Beginner Friendly</h3>
+      </div>
+      <div class="summary-item">
+        <img src="../../assets/img/structure.png" alt="Course Structure">
+        <h3>Practical Projects</h3>
+      </div>
+    </div>
+  
+    <div class="course-objective">
+      <h2>Course Objective</h2>
+      <p>Learn how to use Canva to design professional-quality graphics, presentations, and marketing assets for both personal and business use. Ideal for non-designers who want powerful visuals with ease.</p>
+  
+      <div class="details">
+        <div class="details-left">
+          <h3>What You'll Learn</h3>
+          <ul>
+            <li>Getting Started with Canva</li>
+            <li>Using Templates & Custom Layouts</li>
+            <li>Typography, Colors, and Branding</li>
+            <li>Creating Social Media Content</li>
+            <li>Designing Logos, Flyers & Posters</li>
+            <li>Animations & Presentation Slides</li>
+            <li>Exporting Designs for Web & Print</li>
+          </ul>
+  
+          <h3>Tools & Technologies</h3>
+          <ul>
+            <li>Canva Free & Pro (Web Version)</li>
+            <li>Canva Mobile App (Optional)</li>
+            <li>Google Fonts Integration</li>
+          </ul>
+  
+          <h3>Who Should Enroll</h3>
+          <ul>
+            <li>Small Business Owners</li>
+            <li>Social Media Managers</li>
+            <li>Students & Educators</li>
+            <li>Freelancers & Content Creators</li>
+          </ul>
+        </div>
+  
+        <div class="details-right">
+          <table>
+            <tr><th>Module</th><th>Duration</th></tr>
+            <tr><td>Introduction to Canva & Interface</td><td>2 Days</td></tr>
+            <tr><td>Branding Basics & Typography</td><td>3 Days</td></tr>
+            <tr><td>Designing Social Media Posts</td><td>4 Days</td></tr>
+            <tr><td>Posters, Banners & Marketing Assets</td><td>4 Days</td></tr>
+            <tr><td>Creating Presentations & Videos</td><td>4 Days</td></tr>
+            <tr><td>Final Project: Personal Design Kit</td><td>5 Days</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  
+  </div>
+  
+  
+
+<iframe id="footer-frame" src="../../footer-main.html"></iframe>
+
+</body>
+</html>

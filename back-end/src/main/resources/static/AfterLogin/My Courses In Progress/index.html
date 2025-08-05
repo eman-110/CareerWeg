@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Courses</title>
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    .grid-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      align-items: center;
+      padding: 15px 20px;
+      gap: 10px;
+    }
+
+    .table-header {
+      font-weight: bold;
+      background-color: #eef0ff;
+      color: #000042;
+      border-radius: 12px;
+      margin-bottom: 10px;
+    }
+
+    .course-row {
+      background-color: #fff;
+      border-radius: 12px;
+      margin-bottom: 10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+    }
+
+    .status.progress {
+      color: #e63946;
+      font-weight: 500;
+    }
+
+    .continue-btn {
+      background-color: #00b894;
+      color: #fff;
+      padding: 8px 20px;
+      border: none;
+      border-radius: 30px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .course-form {
+      margin-top: 10px;
+    }
+
+    iframe {
+      width: 100%;
+      border: none;
+    }
+
+    #header-frame {
+      height: 70px;
+    }
+
+    #footer-frame {
+      height: 410px;
+    }
+  </style>
+</head>
+<body>
+  <iframe id="header-frame" src="../../header-main.html"></iframe>
+
+  <div class="dashboard">
+    <aside class="sidebar">
+      <h3>CANDIDATE DASHBOARD</h3>
+      <nav class="sidebar-nav">
+        <a href="../Dashboard/index.html" class="nav-item1">
+          <img src="../../assets/img/profile.png" alt="Profile Icon" />
+          <span>Profile</span>
+        </a>
+        <a href="../Applied Job/index.html" class="nav-item">
+          <img src="../../assets/img/jobs.png" alt="Job Listing Icon" />
+          <span>Applied Jobs</span>
+        </a>
+        <a href="../My Courses In Progress/index.html" class="nav-item">
+          <img src="../../assets/img/My Courses.png" alt="Course Icon" />
+          <span>My Courses</span>
+        </a>
+      </nav>
+      <a href="../../BeforeLogin/HomePageBeforeLogin/homePageBeforeLogin.html" class="logout">
+        <img src="../../assets/img/logout.png" alt="Logout Icon" />
+        <span>Log-out</span>
+      </a>
+    </aside>
+
+    <div class="content">
+      <h1>My Courses</h1>
+
+      <div class="tabs">
+        <a href="../My Courses In Progress/index.html" class="tab active">In Progress</a>
+        <a href="../My Courses Complete/index.html" class="tab inactive">Complete</a>
+      </div>
+
+      <!-- Header Row -->
+      <div class="table-header grid-row">
+        <div>Course Name</div>
+        <div>Status</div>
+        <div>Enrollment Date</div>
+        <div>Action</div>
+      </div>
+
+      <!-- Injected Course Rows -->
+      <div class="course-form" id="course-list"></div>
+    </div>
+  </div>
+
+  <iframe id="footer-frame" src="../../footer-main.html"></iframe>
+
+  <script>
+function loadCourses() {
+  fetch("/api/enrollments/my-courses")
+    .then(response => response.json())
+    .then(courses => {
+      const courseList = document.getElementById("course-list");
+      const inProgressCourses = courses.filter(c => c.status === "In Progress");
+
+      if (inProgressCourses.length === 0) {
+        courseList.innerHTML = "<p>No courses in progress yet.</p>";
+        return;
+      }
+
+      inProgressCourses.forEach(course => {
+        courseList.innerHTML += `
+          <div class="course-row grid-row">
+            <div><strong>${course.courseName}</strong></div>
+            <div class="status progress">${course.status}</div>
+            <div>${course.enrollmentDate}</div>
+            <div>
+              <button type="button" class="continue-btn" onclick="continueCourse('${course.courseName}')">Continue</button>
+            </div>
+          </div>
+        `;
+      });
+    });
+}
+
+
+   
+    document.addEventListener("DOMContentLoaded", loadCourses);
+
+
+const coursePages = [
+  { keyword: "illustrator", path: "../course/illustrator-course.html" },
+  { keyword: "canva", path: "../overview/canva-course.html" },
+  { keyword: "photoshop", path: "../overview/photoshop-course.html" },
+  // Add more course mappings here
+];
+
+function continueCourse(courseName) {
+  const lowerName = courseName.toLowerCase();
+  const match = coursePages.find(cp => lowerName.includes(cp.keyword));
+  
+  if (match) {
+    window.location.href = match.path;
+  } else {
+    alert("No matching course page found for: " + courseName);
+  }
+}
+
+    
+  </script>
+</body>
+</html>

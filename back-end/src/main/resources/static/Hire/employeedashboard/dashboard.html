@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Employee Dashboard</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+    
+<!-- Header -->
+<iframe id="header-frame" src="../../header-hire.html"></iframe>
+
+  <div class="dashboard-container">
+    <aside class="sidebar">
+      <h3>EMPLOYEE DASHBOARD</h3>
+      <nav class="sidebar-nav">
+        <a href="../employeedashboard/dashboard.html" class="nav-item1">
+          <img src="../../assets/img/profile.png" alt="Profile Icon" />
+          <span>Profile</span>
+        </a>
+        <a href="../joblisting/employeeJobListing.html" class="nav-item">
+          <img src="../../assets/img/jobs.png" alt="Job Listing Icon" />
+          <span>Job Listing</span>
+        </a>
+      </nav>
+      <a href="../../BeforeLogin/HomePageBeforeLogin/homePageBeforeLogin.html" id="logout-link" class="logout">
+        <img src="../../assets/img/logout.png" alt="Logout Icon" />
+        <span>Log-out</span>
+      </a>
+    </aside>
+
+    <main class="main-content">
+      <section class="profile-card">
+        <h2 id="user-name">Loading name... <img src="https://img.icons8.com/material-rounded/16/000000/edit.png" alt="Edit" class="edit-icon"/></h2>
+        <p>
+          <span id="user-email">Loading email...</span>
+          <img src="https://img.icons8.com/material-rounded/16/000000/edit.png" alt="Edit" class="edit-icon" />
+        </p>
+        <p id="user-phone">Loading phone...</p>
+        <p id="user-address">Loading address...</p>
+      </section>
+      
+
+      <button class="add-btn">
+        <img src="https://img.icons8.com/ios-filled/24/plus.png" alt="Add Icon" />
+      </button>
+    </main>
+  </div>
+    <!-- Footer -->
+<iframe id="footer-frame" src="../../footer-hire.html"></iframe>
+
+<script src="script.js"></script>
+
+</body>
+</html>

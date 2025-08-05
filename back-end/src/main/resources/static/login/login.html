@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login Page</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Sign Up Section -->
+<section class="login-page">
+  <div class="login-container">
+    
+    <!-- Left side: Illustration -->
+    <div class="illustration">
+      <img src="../assets/img/hero-vector.png" alt="Hero Image">
+    </div>
+   <div class="login-form">
+    <!-- Right side: Sign Up Form -->
+    <form action="/api/users/login" method="POST">
+      <input type="email" name="email" placeholder="Email" required />
+      <input type="password" name="password" placeholder="Password" required />
+      <button type="submit">Login</button>
+    </form>
+    <p class="signup-text">Don't have an account yet? <a href="../signup/signup.html">Signup</a></p>
+  </div>
+</section>
+
+<div id="footer-placeholder"></div>
+
+<script>
+  fetch('../footer.html')
+    .then(response => response.text())
+    .then(data => document.getElementById('footer-placeholder').innerHTML = data);
+</script>
+
+</body>
+</html>

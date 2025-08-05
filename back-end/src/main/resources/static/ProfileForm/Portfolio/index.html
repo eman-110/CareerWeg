@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CareerWeg - Portfolio Samples</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+  <div class="left-side">
+    <img src="../../assets/img/a (19).png" alt="Rocket">
+  </div>
+  <div class="right-side">
+    <img class="logo" src="../../assets/img/logo.png" alt="Logo">
+
+    <div class="profile-box">
+      <h2 class="profile-title">Create profile</h2>
+      <div class="profile-header">
+        <a href="../ProfileDescription/index.html">
+          <img src="../../assets/img/vector-arrow.png" alt="Back" class="back-button">
+        </a>
+        <span class="step-count">7/8</span>
+      </div>
+
+      <div class="progress-bar">
+        <div class="progress" style="width: 85%;"></div>
+      </div>
+
+      <div class="profile-content">
+        <h3>Portfolio Samples</h3>
+        <p>Enter portfolio URLs that reflect your work</p>
+        <form action="/api/users/save-portfolio-links" method="POST" id="portfolioForm">
+          <input type="url" name="portfolio1" id="portfolioInput" placeholder="https://your-behance-or-dribbble.com" required>
+          <div class="no-portfolio">
+            <label for="noPortfolio">
+              <input type="checkbox" id="noPortfolio" name="noPortfolio" onchange="togglePortfolioField()">
+              No portfolio
+            </label>
+          </div>
+          
+          
+          <button type="submit" class="next-button">Next</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// Check if user is logged in when page loads
+async function checkUserSession() {
+  try {
+    const response = await fetch("/api/users/full-profile", {
+      method: "GET",
+      credentials: 'include'
+    });
+    
+    if (response.status === 401) {
+      // User not logged in, redirect to login
+      alert("Please log in to access this page.");
+      window.location.href = "/login/login.html";
+      return false;
+    }
+    return true;
+  } catch (error) {
+    console.error("Error checking session:", error);
+    alert("Please log in to access this page.");
+    window.location.href = "/login/login.html";
+    return false;
+  }
+}
+
+function togglePortfolioField() {
+  const noPortfolioCheckbox = document.getElementById('noPortfolio');
+  const portfolioInput = document.getElementById('portfolioInput');
+  const portfolioForm = document.getElementById('portfolioForm');
+  
+  if (noPortfolioCheckbox.checked) {
+    // If "No portfolio" is checked, disable the input and remove required
+    portfolioInput.disabled = true;
+    portfolioInput.removeAttribute('required');
+    portfolioInput.value = ''; // Clear the value
+    portfolioForm.classList.add('no-portfolio-selected');
+  } else {
+    // If "No portfolio" is unchecked, enable the input and add required
+    portfolioInput.disabled = false;
+    portfolioInput.setAttribute('required', 'required');
+    portfolioForm.classList.remove('no-portfolio-selected');
+  }
+}
+
+// Initialize the form state when page loads
+document.addEventListener('DOMContentLoaded', async function() {
+  // Check if user is logged in first
+  const isLoggedIn = await checkUserSession();
+  if (!isLoggedIn) {
+    return; // Stop execution if not logged in
+  }
+  
+  togglePortfolioField();
+});
+</script>
+
+</body>
+</html>

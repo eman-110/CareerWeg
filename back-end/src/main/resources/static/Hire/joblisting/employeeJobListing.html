@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Job Listing - Employee Dashboard</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+      
+<!-- Header -->
+<iframe id="header-frame" src="../../header-hire.html"></iframe>
+  <div class="container">
+    <aside class="sidebar">
+      <h3>EMPLOYEE DASHBOARD</h3>
+      <nav class="sidebar-nav">
+        <a href="../employeedashboard/dashboard.html" class="nav-item">
+          <img src="../../assets/img/profile.png" alt="Profile Icon" />
+          <span>Profile</span>
+        </a>
+        <a href="../joblisting/employeeJobListing.html" class="nav-item1">
+          <img src="../../assets/img/jobs.png" alt="Job Listing Icon" />
+          <span>Job Listing</span>
+        </a>
+      </nav>
+      <a href="../../BeforeLogin/HomePageBeforeLogin/homePageBeforeLogin.html" class="logout">
+        <img src="../../assets/img/logout.png" alt="Logout Icon" />
+        <span>Log-out</span>
+      </a>
+    </aside>
+
+    <main class="main">
+      <h2>Job Listing</h2>
+      <div class="job-card">
+        <table class="job-table">
+          <thead>
+            <tr>
+              <th>Jobs</th>
+              <th>Status</th>
+              <th>Deadline</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="job-list-body">
+            <tr>
+              <td><span class="job-name">Job Name</span><br /><span class="job-info">Duration / Price</span></td>
+              <td class="status active">Active</td>
+              <td>Month Date, Year</td>
+              <td><button class="btn">View Applicant</button></td>
+            </tr>
+            <tr>
+              <td><span class="job-name">Job Name</span><br /><span class="job-info">Duration / Price</span></td>
+              <td class="status deactive">Deactivate</td>
+              <td>Month Date, Year</td>
+              <td><button class="btn">View Applicant</button></td>
+            </tr>
+            <tr>
+              <td><span class="job-name">Job Name</span><br /><span class="job-info">Duration / Price</span></td>
+              <td class="status active">Active</td>
+              <td>Month Date, Year</td>
+              <td><button class="btn">View Applicant</button></td>
+            </tr>
+            <tr>
+              <td><span class="job-name">Job Name</span><br /><span class="job-info">Duration / Price</span></td>
+              <td class="status active">Active</td>
+              <td>Month Date, Year</td>
+              <td><button class="btn">View Applicant</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+      <!-- Footer -->
+<iframe id="footer-frame" src="../../footer-hire.html"></iframe>
+
+<script src="script.js"></script>
+</body>
+</html>

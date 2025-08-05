@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CareerWeg Header</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+
+    header {
+      width: 100%;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2rem;
+      background-color: #fff;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+
+    .logo img {
+      height: 50px;
+    }
+
+    nav {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 16px;
+      color: #05093B;
+      transition: color 0.3s ease;
+    }
+
+    nav a.active {
+      color: #00A693;
+    }
+
+    nav a:hover {
+      color: #00A693;
+    }
+
+    .profile-container {
+      position: relative;
+    }
+
+    .profile-icon {
+      cursor: pointer;
+    }
+
+    .profile-icon img {
+      width: 49px;
+      height: 49px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 60px;
+      right: 0;
+      background: white;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      overflow: hidden;
+      z-index: 1000;
+      min-width: 150px;
+    }
+
+    .dropdown-menu a {
+      display: block;
+      padding: 12px 20px;
+      color: #333;
+      text-decoration: none;
+      font-size: 15px;
+      border-bottom: 1px solid #eee;
+    }
+
+    .dropdown-menu a:hover {
+      background-color: #f5f5f5;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        height: auto;
+        padding: 1rem;
+      }
+
+      nav {
+        flex-direction: column;
+        gap: 1rem;
+        margin: 1rem 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <img src="assets/img/logo.png" alt="CareerWeg Logo" />
+  </div>
+
+  <nav>
+    <a href="AfterLogin/Home/home.html" target="_inframe">Home</a>
+    <a href="AfterLogin/Roadmap/index.html" target="_inframe">Courses</a>
+    <a href="AfterLogin/Job Search/index.html" target="_inframe">Find Jobs</a>
+    <a href="AfterLogin/Dashboard/index.html" target="_inframe">Dashboard</a>
+    <a href="AfterLogin/CareerWeg Plus/index.html" target="_inframe">CareerWeg Plus</a>
+  </nav>
+
+  <div class="profile-container">
+    <div class="profile-icon" onclick="toggleDropdown(event)">
+      <img src="assets/img/profileimage.png" alt="CareerWeg profile" />
+    </div>
+    <div class="dropdown-menu" id="dropdownMenu">
+      <a href="edit-profile.html">Edit Profile</a>
+      <a href="#" onclick="logoutUser()">Log Out</a>
+    </div>
+  </div>
+</header>
+
+<script>
+  function toggleDropdown(event) {
+    event.stopPropagation(); // prevent window click from closing it
+    const menu = document.getElementById("dropdownMenu");
+    menu.style.display = menu.style.display === "block" ? "none" : "block";
+  }
+
+  function logoutUser() {
+    fetch('/api/users/logout')
+      .then(() => {
+        window.location.href = '/webpages/login/login.html';
+      });
+  }
+
+  window.addEventListener("click", function () {
+    const dropdown = document.getElementById("dropdownMenu");
+    dropdown.style.display = "none";
+  });
+</script>
+
+</body>
+</html>
