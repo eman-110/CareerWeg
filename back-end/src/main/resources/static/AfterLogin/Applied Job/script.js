@@ -1,6 +1,6 @@
 
   document.addEventListener("DOMContentLoaded", async () => {
-    const res = await fetch("/api/users/applied-jobs", {
+    const res = await fetch("/api/jobs/applied-jobs", {
       credentials: 'include' // Include cookies/session
     });
     const container = document.querySelector(".job-list-form");
@@ -21,7 +21,7 @@
     container.innerHTML = ""; // Clear existing content
 
     applications.forEach(app => {
-      const job = app.job;
+      const job = app.jobs;
       const appliedDate = new Date(app.appliedAt).toLocaleDateString();
 
       const jobBlock = document.createElement("div");
@@ -36,7 +36,7 @@
           <span class="job-details">${job.duration || "-"} / Rs ${job.minBudget || 0}-${job.maxBudget || 0}</span>
         </div>
         <div class="job-date">${appliedDate}</div>
-        <button type="button" class="view-btn" onclick="window.location.href='/AfterLogin/ViewDetail/index.html?jobId=${job.id}'">
+        <button type="button" class="view-btn" onclick="window.location.href='/AfterLogin/View Detail/index.html?jobId=${job.id}'">
           View Detail
         </button>
       `;

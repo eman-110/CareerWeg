@@ -1,0 +1,2 @@
+[build]
+  publish = "back-end/src/main/resources/static"

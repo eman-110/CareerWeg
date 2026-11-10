@@ -156,7 +156,7 @@ async function submitEducations() {
   });
 
   if (response.ok) {
-    window.location.href = "/ProfileForm/NextPage/index.html";
+    window.location.href = "/ProfileForm/Language/index.html";
   } else if (response.status === 401) {
     // User not logged in, redirect to login page
     alert("Please log in to save your education.");

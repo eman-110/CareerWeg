@@ -26,9 +26,10 @@ document.addEventListener("DOMContentLoaded", async () => {
     const jobCard = document.createElement("form");
     jobCard.className = "job-card";
     jobCard.method = "POST";
-    jobCard.action = "/apply-job";
+    jobCard.action = "/api/jobs/apply-job";
 
     jobCard.innerHTML = `
+      <input type="hidden" name="jobId" value="${job.id}">
       <div class="job-meta">
         <span class="post-date">Status: ${status}</span>
         <span class="price">Rs ${job.minBudget || 0}</span>

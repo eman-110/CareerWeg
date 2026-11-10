@@ -1,6 +1,6 @@
 # CareerWeg
 
-CareerWeg is a Java/Spring Boot career platform designed for job seekers and employers. The project includes a backend API for managing users, profiles, jobs, and applications, and it serves a collection of HTML/CSS/JavaScript pages from the `back-end/src/main/resources/static` folder for the public and authenticated flows.
+CareerWeg is a career platform showcase for job seekers and employers, with static pages for profiles, job listings, applications, and courses. The full application has a Java/Spring Boot backend and MySQL database. The Netlify preview described here publishes only the static frontend; it does not deploy or connect to a backend or database.
 
 ## Features
 
@@ -10,7 +10,9 @@ CareerWeg is a Java/Spring Boot career platform designed for job seekers and emp
 - Job search and candidate application workflow
 - Session-based authenticated access for logged-in users
 - Course, roadmap, skill test, and certificate-related pages
-- File upload support for uploaded artifacts stored under the project `uploads/` directory
+- Static showcase preview on Netlify
+
+The features above describe the full application. On the backend-free Netlify preview, data-driven and account features are not operational; see [Features unavailable in the static preview](#features-unavailable-in-the-static-preview).
 
 ## Technologies used
 
@@ -18,16 +20,18 @@ CareerWeg is a Java/Spring Boot career platform designed for job seekers and emp
 - Spring Boot 3.4.5
 - Spring Web MVC
 - Spring Data JPA / Hibernate
-- MySQL driver and H2 dependency in the build
+- MySQL and H2 drivers in the Java build
 - Maven wrapper (`mvnw` / `mvnw.cmd`)
 - Static HTML, CSS, and JavaScript front-end files served by the Spring Boot application
+- Netlify Functions (Node.js), `mysql2`, and Netlify Blobs for the Netlify deployment
 
 ## Prerequisites
 
 Before running the application, make sure you have:
 
 - Java 17 or newer installed
-- A local MySQL instance and `careerweg_db` database for the default local profile
+- Node.js 20 or newer and npm for Netlify Function development and tests (not required to publish the static preview)
+- A MySQL-compatible database with the existing CareerWeg schema
 - A browser available for the front-end pages
 
 ## Installation and setup
@@ -35,7 +39,7 @@ Before running the application, make sure you have:
 1. Clone the repository.
 2. Open the project root.
 3. Configure the `DB_URL`, `DB_USERNAME`, and `DB_PASSWORD` environment variables for your local MySQL instance.
-4. Ensure the project root has write access for uploaded files under `uploads/`.
+4. Ensure the project root has write access for uploaded files under `uploads/` when running the Java backend locally.
 
 Example configuration values in the project currently point to:
 
@@ -62,37 +66,45 @@ $env:DB_PASSWORD = "<your-local-mysql-password>"
 
 The application is configured to run with the default Spring Boot web server on port `8080` unless overridden elsewhere.
 
-## Deploying a demo to Render
+## Deploying the static preview to Netlify
 
-The repository includes a root-level `Dockerfile` for deploying the application as a Render web service. The container activates the `render` Spring profile, which uses the included in-memory H2 database instead of MySQL.
+The root `netlify.toml` publishes `back-end/src/main/resources/static` as a static site. It deliberately does not configure or deploy Netlify Functions. Publishing this preview does not access or modify your local MySQL database, and no database or session environment variables are needed.
 
-1. Push the repository to a Git provider account that Render can access.
-2. In Render, create a **New > Web Service** and connect the repository.
-3. Choose Docker as the runtime and keep the repository root as the build context so Render can find the root-level `Dockerfile`.
-4. Choose the **Free** instance type and deploy.
-5. Open the `onrender.com` address Render assigns to the service.
+1. Push this repository to a GitHub, GitLab, or Bitbucket account that Netlify can access.
+2. Sign in to Netlify and choose **Add new site** / **Add a new project**, then import the repository from your Git provider.
+3. Keep the repository root as the base directory. Use the settings from the checked-in `netlify.toml`: publish directory `back-end/src/main/resources/static`; no build command is needed.
+4. Start the deploy. Netlify will publish the static files and provide a `*.netlify.app` preview URL.
+5. Open that URL. The static root `index.html` redirects to the public CareerWeg homepage.
 
-This setup is intended for a demo, not durable production use:
+Do not configure the local MySQL credentials in Netlify for this showcase. The repository retains API source under `netlify/function-source/` for reference and tests, outside Netlify's auto-discovered functions directory; it is not deployed by this static-only configuration.
 
-- Render Free services can spin down after inactivity and take time to start again.
-- H2 is in-memory, so database records reset when the service restarts.
-- Uploaded files are saved in the service's local `uploads/` directory, which is not persistent on Render Free.
-- The Render profile enables secure session cookies for HTTPS.
+## Features unavailable in the static preview
 
-Do not commit real database credentials; supply them through `DB_URL`, `DB_USERNAME`, and `DB_PASSWORD`. If a real password was already committed, rotate it because removing it from the current file does not erase it from Git history.
+Without a running backend, pages can be displayed but API-backed actions cannot retrieve or save application data. In particular:
+
+- Student/employer signup, login, sessions, and logout
+- Loading, creating, or updating profiles and profile sections
+- Loading jobs or employer job listings, posting jobs, applying, and viewing application or applicant details
+- Employer contact/profile data that is loaded or saved through the API
+- Course enrollment, loading in-progress or completed courses, and recording course completion
+- Skill-file uploads and backend-dependent skill-test completion
+
+These pages may show empty content, errors, or forms that cannot submit successfully. Static page navigation and content that does not require the API remain available. No database connection is attempted by the preview.
 
 ## How to use it
 
-1. Start the backend.
-2. Open the application in a browser, typically at `http://localhost:8080`.
-3. Use the public and authenticated pages under the static resources to sign up, log in, complete a profile, browse jobs, and manage employer flows.
-4. For example, the project contains static pages for:
-   - `BeforeLogin/HomePageBeforeLogin/homePageBeforeLogin.html`
-   - `ProfileForm/WelcomePage/index.html`
-   - `Hire/Login/index.html`
-   - `AfterLogin/Dashboard/index.html`
+For the local full application, start the Java backend and open it at `http://localhost:8080`. For the Netlify static preview, open the deployed `*.netlify.app` address; backend-dependent features listed above will not work there.
 
-The backend also exposes API endpoints under `/api`, including user management and job operations.
+1. Sign up as a student or employer.
+2. Complete a profile, browse jobs, post jobs as an employer, or enroll in courses.
+The project includes static pages for:
+
+- `BeforeLogin/HomePageBeforeLogin/homePageBeforeLogin.html`
+- `ProfileForm/WelcomePage/index.html`
+- `Hire/Login/index.html`
+- `AfterLogin/Dashboard/index.html`
+
+The Java backend exposes API routes under `/api`. The Netlify static preview does not publish an API.
 
 ## Project structure
 
@@ -111,17 +123,20 @@ CareerWeg/
 │   │   │   │       └── BackEndApplication.java
 │   │   │   └── resources/
 │   │   │       ├── application.properties
-│   │   │       ├── application-render.properties
 │   │   │       └── static/
 │   │   └── test/
 │   ├── mvnw
 │   ├── mvnw.cmd
 │   ├── pom.xml
 │   └── user-info-writing.png
-├── uploads/
-│   ├── bhb.ai
-│   └── saad.ai
-├── Dockerfile
+├── netlify/
+│   └── function-source/
+│       └── api.mjs                 # Retained for tests; not deployed
+├── test/
+│   └── netlify-api.test.mjs
+├── netlify.toml
+├── package.json
+├── package-lock.json
 ├── README.md
 └── .git/
 ```
@@ -140,20 +155,27 @@ Key backend application classes include:
 The main runtime settings are defined in:
 
 - `back-end/src/main/resources/application.properties`
+- `netlify.toml` — Netlify build, publish, and functions paths
+- Netlify site environment variables — none required for the static preview
 
-Current configuration includes:
+For the Java backend, configure `DB_URL`, `DB_USERNAME`, and `DB_PASSWORD` in the environment. The static Netlify preview needs no environment variables. If you separately configure the retained Netlify Function source for a future backend deployment, its database and signing settings are:
 
-- `spring.application.name=back-end`
-- MySQL datasource URL: `jdbc:mysql://localhost:3306/careerweg_db`
-- `DB_URL`, `DB_USERNAME`, and `DB_PASSWORD` environment variables can override the local MySQL settings
-- `spring.jpa.hibernate.ddl-auto=update`
-- `spring.jpa.show-sql=true`
-- `server.servlet.session.timeout=30m`
-- `spring.servlet.multipart.max-file-size=10MB`
-- `spring.servlet.multipart.max-request-size=10MB`
-- Render demo settings are in `back-end/src/main/resources/application-render.properties`
+- `DB_HOST`
+- `DB_PORT` (usually `3306`)
+- `DB_NAME`
+- `DB_USER`
+- `DB_PASSWORD`
+- `DB_SSL` (enabled by default; set to `false` only for a trusted local connection)
+- `DB_SSL_CA` (optional database CA certificate, if required by the provider)
+- `SESSION_SECRET` (at least 32 characters; generate a unique random value)
 
-The application also configures CORS for `http://localhost:8080` in `BackEndApplication.java`. For a different local database, set the `DB_*` values accordingly.
+Generate a signing secret locally with Node.js, then copy its output directly into Netlify's environment-variable settings:
+
+```bash
+node -e "console.log(require('node:crypto').randomBytes(48).toString('base64url'))"
+```
+
+The Netlify Function does not use Spring's JPA schema auto-update. It expects the existing MySQL table and column names from the provided schema. It uses `job_application` and `enrolledcourse` for the current application's job and course flows; it leaves the separate legacy tables untouched.
 
 ## Screenshots
 
@@ -169,8 +191,9 @@ Contributions are welcome for bug fixes, feature improvements, and UI refinement
 
 1. Keep changes scoped and easy to review.
 2. Update the relevant backend or static front-end files.
-3. Verify the Spring Boot application still starts cleanly with Maven.
-4. Document important configuration changes.
+3. Run `npm test` for Netlify Function changes.
+4. Verify the Spring Boot application still starts cleanly with Maven when Java backend files change.
+5. Document important configuration changes.
 
 This repository does not currently include a dedicated contribution policy or CI workflow file.
 
