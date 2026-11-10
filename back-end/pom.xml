@@ -71,18 +71,17 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.scala-lang</groupId>
+			<artifactId>scala-library</artifactId>
+			<version>2.13.0</version>
+		</dependency>
  </dependencies>
 
 	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
-	
-   <dependency>
-     <groupId>org.scala-lang</groupId>
-     <artifactId>scala-library</artifactId>
-     <version>2.13.0</version>
-   </dependency>
  			<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
