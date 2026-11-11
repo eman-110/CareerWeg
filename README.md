@@ -1,202 +1,303 @@
-# CareerWeg
+﻿# CareerWeg
 
-CareerWeg is a career platform showcase for job seekers and employers, with static pages for profiles, job listings, applications, and courses. The full application has a Java/Spring Boot backend and MySQL database. The Netlify preview described here publishes only the static frontend; it does not deploy or connect to a backend or database.
+<div align="center">
 
-## Features
+[![Java 17](https://img.shields.io/badge/Java-17-blue.svg)](https://www.oracle.com/java/)
+[![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.4.5-brightgreen.svg)](https://spring.io/projects/spring-boot)
+[![MySQL](https://img.shields.io/badge/MySQL-8.x-orange.svg)](https://www.mysql.com/)
+[![Netlify](https://img.shields.io/badge/Netlify-Static%20Preview-00C7B7.svg)](https://www.netlify.com/)
+
+</div>
+
+A modern career platform for job seekers, employers, and learners — built with Java, Spring Boot, and a MySQL-backed backend.
+
+Live demo: https://careerweg.netlify.app/beforelogin/homepagebeforelogin/homepagebeforelogin
+
+CareerWeg brings together profile management, job applications, employer hiring flows, and course-based learning into a single, cohesive platform. It is designed to help users build professional identities, explore opportunities, and grow their skills in one place.
+
+## 🌟 Overview
+
+CareerWeg solves the problem of fragmented career tools by combining:
+
+- personal profile creation and skill tracking
+- job discovery and application workflows
+- employer job posting and applicant management
+- learning resources, course access, and certificate-oriented sections
+
+This project is intended as a full-stack application prototype and portfolio-ready web platform for career-tech use cases.
+
+## 🚀 Key Features
 
 - Student and employer signup/login flows
-- User profile creation and updates with personal details, education, work experience, languages, skills, portfolio links, and contact information
-- Employer job posting and job-list management
-- Job search and candidate application workflow
-- Session-based authenticated access for logged-in users
-- Course, roadmap, skill test, and certificate-related pages
-- Static showcase preview on Netlify
+- Profile creation and editing for job seekers
+- Education, work experience, language, and skill management
+- Employer contact and hiring profile information
+- Job posting, listing, and application processing
+- Course enrollment and learning dashboard sections
+- Career-path and certificate-related pages
+- File upload support for skill-related documents
+- Session-based authenticated access
+- Static preview deployment through Netlify
 
-The features above describe the full application. On the backend-free Netlify preview, data-driven and account features are not operational; see [Features unavailable in the static preview](#features-unavailable-in-the-static-preview).
+## 🛠️ Technologies Used
 
-## Technologies used
+| Category | Tools and Technologies |
+| --- | --- |
+| Backend | Java 17, Spring Boot 3.4.5, Spring Web MVC |
+| Persistence | Spring Data JPA, Hibernate, MySQL, H2 |
+| Frontend | HTML, CSS, JavaScript |
+| Build Tool | Maven Wrapper (`mvnw` / `mvnw.cmd`) |
+| Deployment | Netlify static site publishing |
+| Testing | Spring Boot test starter, Node.js test script |
+| Project Tools | Git, npm, Maven |
 
-- Java 17
-- Spring Boot 3.4.5
-- Spring Web MVC
-- Spring Data JPA / Hibernate
-- MySQL and H2 drivers in the Java build
-- Maven wrapper (`mvnw` / `mvnw.cmd`)
-- Static HTML, CSS, and JavaScript front-end files served by the Spring Boot application
-- Netlify Functions (Node.js), `mysql2`, and Netlify Blobs for the Netlify deployment
+## 📂 Project Structure
 
-## Prerequisites
-
-Before running the application, make sure you have:
-
-- Java 17 or newer installed
-- Node.js 20 or newer and npm for Netlify Function development and tests (not required to publish the static preview)
-- A MySQL-compatible database with the existing CareerWeg schema
-- A browser available for the front-end pages
-
-## Installation and setup
-
-1. Clone the repository.
-2. Open the project root.
-3. Configure the `DB_URL`, `DB_USERNAME`, and `DB_PASSWORD` environment variables for your local MySQL instance.
-4. Ensure the project root has write access for uploaded files under `uploads/` when running the Java backend locally.
-
-Example configuration values in the project currently point to:
-
-- JDBC URL: `jdbc:mysql://localhost:3306/careerweg_db`
-- Username: `root`
-- Password: set in the `DB_PASSWORD` environment variable
-
-## How to run the project
-
-From the `back-end` directory, run:
-
-```bash
-./mvnw spring-boot:run
+```text
+CareerWeg/
+├── .git/
+├── .github/
+├── .gitignore
+├── .netlify/
+├── .vscode/
+├── README.md
+├── netlify.toml
+├── package.json
+├── package-lock.json
+├── test/
+│   └── netlify-api.test.mjs
+├── netlify/
+│   └── function-source/
+│       └── api.mjs
+├── uploads/
+│   ├── bhb.ai
+│   └── saad.ai
+├── back-end/
+│   ├── mvnw
+│   ├── mvnw.cmd
+│   ├── pom.xml
+│   ├── user-info-writing.png
+│   └── src/
+│       ├── main/
+│       │   ├── java/
+│       │   │   └── com/
+│       │   │       └── careerweg/
+│       │   │           └── back_end/
+│       │   │               ├── BackEndApplication.java
+│       │   │               ├── controller/
+│       │   │               │   ├── FileUploadController.java
+│       │   │               │   ├── JobController.java
+│       │   │               │   ├── SessionController.java
+│       │   │               │   ├── UserApiController.java
+│       │   │               │   └── UserController.java
+│       │   │               ├── model/
+│       │   │               │   ├── CareerPath.java
+│       │   │               │   ├── Course.java
+│       │   │               │   ├── Education.java
+│       │   │               │   ├── EmployerContact.java
+│       │   │               │   ├── Enrollment.java
+│       │   │               │   ├── Job.java
+│       │   │               │   ├── JobApplication.java
+│       │   │               │   ├── Language.java
+│       │   │               │   ├── SignupRequest.java
+│       │   │               │   ├── User.java
+│       │   │               │   └── WorkExperience.java
+│       │   │               ├── repository/
+│       │   │               │   ├── EducationRepository.java
+│       │   │               │   ├── EmployerContactRepository.java
+│       │   │               │   ├── EnrolledCourseRepository.java
+│       │   │               │   ├── JobApplicationRepository.java
+│       │   │               │   ├── JobRepository.java
+│       │   │               │   ├── LanguageRepository.java
+│       │   │               │   ├── UserRepository.java
+│       │   │               │   └── WorkExperienceRepository.java
+│       │   │               └── service/
+│       │   │                   └── UserService.java
+│       │   └── resources/
+│       │       ├── application.properties
+│       │       └── static/
+│       │           ├── AfterLogin/
+│       │           ├── BeforeLogin/
+│       │           ├── Hire/
+│       │           ├── ProfileForm/
+│       │           ├── login/
+│       │           ├── signup/
+│       │           ├── assets/
+│       │           ├── index.html
+│       │           ├── styles.css
+│       │           └── test-auth.html
+│       └── test/
+│           └── java/
+│               └── com/
+│                   └── careerweg/
+│                       └── back_end/
+└── ...
 ```
 
-On Windows, use:
+## ⚙️ Prerequisites
+
+Before running the project locally, ensure the following are installed:
+
+- Java 17+
+- Maven or the included Maven wrapper
+- MySQL 8.0 or a compatible database server
+- Node.js 20+ and npm
+- Git
+- A browser such as Chrome, Edge, or Firefox
+- Write permissions for the `uploads/` directory
+
+## 🏁 Installation & Setup
+
+### 1) Clone the repository
+
+```bash
+git clone https://github.com/eman-110/CareerWeg.git
+cd CareerWeg
+```
+
+### 2) Configure database environment variables
+
+Set the following variables before starting the backend:
+
+#### macOS / Linux
+
+```bash
+export DB_URL="jdbc:mysql://localhost:3306/careerweg_db?useSSL=false&serverTimezone=UTC"
+export DB_USERNAME="root"
+export DB_PASSWORD="your_mysql_password"
+```
+
+#### Windows PowerShell
 
 ```powershell
 $env:DB_URL = "jdbc:mysql://localhost:3306/careerweg_db?useSSL=false&serverTimezone=UTC"
 $env:DB_USERNAME = "root"
-$env:DB_PASSWORD = "<your-local-mysql-password>"
+$env:DB_PASSWORD = "your_mysql_password"
+```
+
+### 3) Create the database
+
+```sql
+CREATE DATABASE careerweg_db;
+```
+
+### 4) Run the backend
+
+```bash
+cd back-end
+./mvnw spring-boot:run
+```
+
+Windows:
+
+```powershell
+cd back-end
 .\mvnw.cmd spring-boot:run
 ```
 
-The application is configured to run with the default Spring Boot web server on port `8080` unless overridden elsewhere.
-
-## Deploying the static preview to Netlify
-
-The root `netlify.toml` publishes `back-end/src/main/resources/static` as a static site. It deliberately does not configure or deploy Netlify Functions. Publishing this preview does not access or modify your local MySQL database, and no database or session environment variables are needed.
-
-1. Push this repository to a GitHub, GitLab, or Bitbucket account that Netlify can access.
-2. Sign in to Netlify and choose **Add new site** / **Add a new project**, then import the repository from your Git provider.
-3. Keep the repository root as the base directory. Use the settings from the checked-in `netlify.toml`: publish directory `back-end/src/main/resources/static`; no build command is needed.
-4. Start the deploy. Netlify will publish the static files and provide a `*.netlify.app` preview URL.
-5. Open that URL. The static root `index.html` redirects to the public CareerWeg homepage.
-
-Do not configure the local MySQL credentials in Netlify for this showcase. The repository retains API source under `netlify/function-source/` for reference and tests, outside Netlify's auto-discovered functions directory; it is not deployed by this static-only configuration.
-
-## Features unavailable in the static preview
-
-Without a running backend, pages can be displayed but API-backed actions cannot retrieve or save application data. In particular:
-
-- Student/employer signup, login, sessions, and logout
-- Loading, creating, or updating profiles and profile sections
-- Loading jobs or employer job listings, posting jobs, applying, and viewing application or applicant details
-- Employer contact/profile data that is loaded or saved through the API
-- Course enrollment, loading in-progress or completed courses, and recording course completion
-- Skill-file uploads and backend-dependent skill-test completion
-
-These pages may show empty content, errors, or forms that cannot submit successfully. Static page navigation and content that does not require the API remain available. No database connection is attempted by the preview.
-
-## How to use it
-
-For the local full application, start the Java backend and open it at `http://localhost:8080`. For the Netlify static preview, open the deployed `*.netlify.app` address; backend-dependent features listed above will not work there.
-
-1. Sign up as a student or employer.
-2. Complete a profile, browse jobs, post jobs as an employer, or enroll in courses.
-The project includes static pages for:
-
-- `BeforeLogin/HomePageBeforeLogin/homePageBeforeLogin.html`
-- `ProfileForm/WelcomePage/index.html`
-- `Hire/Login/index.html`
-- `AfterLogin/Dashboard/index.html`
-
-The Java backend exposes API routes under `/api`. The Netlify static preview does not publish an API.
-
-## Project structure
+Then open:
 
 ```text
-CareerWeg/
-├── back-end/
-│   ├── .mvn/
-│   ├── src/
-│   │   ├── main/
-│   │   │   ├── java/
-│   │   │   │   └── com/careerweg/back_end/
-│   │   │   │       ├── controller/
-│   │   │   │       ├── model/
-│   │   │   │       ├── repository/
-│   │   │   │       ├── service/
-│   │   │   │       └── BackEndApplication.java
-│   │   │   └── resources/
-│   │   │       ├── application.properties
-│   │   │       └── static/
-│   │   └── test/
-│   ├── mvnw
-│   ├── mvnw.cmd
-│   ├── pom.xml
-│   └── user-info-writing.png
-├── netlify/
-│   └── function-source/
-│       └── api.mjs                 # Retained for tests; not deployed
-├── test/
-│   └── netlify-api.test.mjs
-├── netlify.toml
-├── package.json
-├── package-lock.json
-├── README.md
-└── .git/
+http://localhost:8080
 ```
 
-Key backend application classes include:
+### 5) Optional: static Netlify preview
 
-- `BackEndApplication.java` — Spring Boot application entry point
-- `UserController.java` — signup, login, session, profile, and profile-data endpoints
-- `JobController.java` — employer job submission, job listings, and applications
-- `FileUploadController.java` — file upload handling
-- `SessionController.java` — session user lookup
-- `UserService.java` — core user service logic
+The app is also configured for a static preview via Netlify using the publish directory:
 
-## Configuration or environment variables
-
-The main runtime settings are defined in:
-
-- `back-end/src/main/resources/application.properties`
-- `netlify.toml` — Netlify build, publish, and functions paths
-- Netlify site environment variables — none required for the static preview
-
-For the Java backend, configure `DB_URL`, `DB_USERNAME`, and `DB_PASSWORD` in the environment. The static Netlify preview needs no environment variables. If you separately configure the retained Netlify Function source for a future backend deployment, its database and signing settings are:
-
-- `DB_HOST`
-- `DB_PORT` (usually `3306`)
-- `DB_NAME`
-- `DB_USER`
-- `DB_PASSWORD`
-- `DB_SSL` (enabled by default; set to `false` only for a trusted local connection)
-- `DB_SSL_CA` (optional database CA certificate, if required by the provider)
-- `SESSION_SECRET` (at least 32 characters; generate a unique random value)
-
-Generate a signing secret locally with Node.js, then copy its output directly into Netlify's environment-variable settings:
-
-```bash
-node -e "console.log(require('node:crypto').randomBytes(48).toString('base64url'))"
+```toml
+[build]
+  publish = "back-end/src/main/resources/static"
 ```
 
-The Netlify Function does not use Spring's JPA schema auto-update. It expects the existing MySQL table and column names from the provided schema. It uses `job_application` and `enrolledcourse` for the current application's job and course flows; it leaves the separate legacy tables untouched.
+This preview shows the front-end UI, but it does not fully support backend-driven database operations.
 
-## Screenshots
+## 🗄️ Database Configuration
 
-The repository includes an image file at `back-end/user-info-writing.png`.
+The Spring Boot backend uses MySQL and the configuration is defined in `back-end/src/main/resources/application.properties`.
 
-![Project screenshot](back-end/user-info-writing.png)
+```properties
+spring.application.name=back-end
+```properties
+spring.application.name=back-end
+spring.datasource.url=${DB_URL:jdbc:mysql://localhost:3306/careerweg_db?useSSL=false&serverTimezone=UTC}
+spring.datasource.username=${DB_USERNAME:root}
+spring.datasource.password=${DB_PASSWORD}
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL8Dialect
+```
 
-The main UI is built as static HTML pages under `back-end/src/main/resources/static`, so screenshots can also be captured from the app once it is running locally.
+Hibernate creates or updates tables based on the JPA entity classes. The main entities include:
 
-## Contributing
+- `User` → `users`
+- `Job` → `jobs`
+- `Education` → `educations`
+- `EmployerContact` → `employer_contact_info`
+- `Enrollment` → `enrollments`
+- `Course` → `courses`
+- `CareerPath` → `career_paths`
+- `JobApplication` → application records
 
-Contributions are welcome for bug fixes, feature improvements, and UI refinements. For an effective contribution:
+## 🧭 Application Usage
 
-1. Keep changes scoped and easy to review.
-2. Update the relevant backend or static front-end files.
-3. Run `npm test` for Netlify Function changes.
-4. Verify the Spring Boot application still starts cleanly with Maven when Java backend files change.
-5. Document important configuration changes.
+### Student Flow
 
-This repository does not currently include a dedicated contribution policy or CI workflow file.
+1. Sign up as a student.
+2. Complete your profile with education, skills, work experience, and languages.
+3. Browse job listings and apply for roles.
+4. Explore learning and career-related sections.
+5. Access dashboard and session-based account pages.
 
-## License
+### Employer Flow
 
-No explicit license file is present in the repository, so the project does not currently declare a license. If this project is intended for public distribution or reuse, add a license file before publishing it externally.
+1. Sign up as an employer.
+2. Complete employer contact details.
+3. Post a job listing with title, skills, category, budget, and deadline.
+4. Manage posted jobs and view applicant activity.
+5. Use the hiring dashboard for employer operations.
+
+### File Uploads
+
+The `FileUploadController` saves uploaded files into the project-level `uploads/` directory, which is used for document and skill-related uploads during local testing.
+
+## 📸 Screenshots
+
+The repository includes a sample project image:
+
+```md
+![CareerWeg Screenshot](back-end/user-info-writing.png)
+```
+
+![CareerWeg Screenshot](back-end/user-info-writing.png)
+
+Additional screenshots can be added for:
+
+- landing page
+- signup/login screens
+- profile form flow
+- employer dashboard
+- job listing and application pages
+- course and roadmap views
+
+## 🌱 Future Improvements
+
+- Add password hashing and stronger authentication security
+- Improve validation and error handling for forms and APIs
+- Introduce DTOs for cleaner API responses
+- Add admin and moderation dashboards
+- Expand job matching and filtering features
+- Improve course and certificate data models
+- Add end-to-end automated testing
+- Prepare the app for production deployment with environment hardening
+- Add a proper open-source license file
+
+## 👨‍💻 Author
+
+Developed by Emaan
+
+GitHub: https://github.com/eman-110
+
+---
+
+Built as a portfolio and learning project to demonstrate a real-world career platform with both job and learning workflows.
